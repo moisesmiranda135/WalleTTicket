@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WalleTTicketStyle {
+  static const Color primaryColor = Color.fromRGBO(0, 133, 255, 1);
+
   // ButtonColors
   static const Color blueButtonB = Color.fromRGBO(0, 133, 255, 1);
 
@@ -16,6 +18,13 @@ class WalleTTicketStyle {
         color: WalleTTicketStyle.blueButtonB,
         width: 2.0,
       ));
+
+  //IconsBottomBar
+  static const SizedBox separatedIconsBB = SizedBox(
+    width: 50,
+  );
+  static const double containerIconBBSize = 45;
+  static const double iconBBSize = 35;
 
 /*
   // Margins, Paddings, Card properties

@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           focusedBorder: WalleTTicketStyle.formBorder,
                           contentPadding: WalleTTicketStyle.contentPadding,
                           fillColor: Colors.black,
-                          hintText: "Ecribe tu email",
+                          hintText: "Escribe tu email",
                           hintStyle: const TextStyle(color: Colors.grey)),
                     ),
                   ),
@@ -229,7 +229,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     TextSpan(
-                        text: '    Registrate',
+                        text: '    Regístrate',
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => Navigator.push(
                                 context,

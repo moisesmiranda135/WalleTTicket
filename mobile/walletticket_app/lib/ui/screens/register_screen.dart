@@ -192,7 +192,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         validator: (String? value) {
                           return (value == null || !value.contains('@'))
-                              ? 'Escrine un email válido'
+                              ? 'Escribe un email válido'
                               : null;
                         },
                         decoration: InputDecoration(
@@ -202,7 +202,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             focusedBorder: WalleTTicketStyle.formBorder,
                             contentPadding: WalleTTicketStyle.contentPadding,
                             fillColor: Colors.white,
-                            hintText: "Enter Email",
+                            hintText: "Escribe un Email",
                             hintStyle: const TextStyle(color: Colors.grey)),
                       ),
                     ),

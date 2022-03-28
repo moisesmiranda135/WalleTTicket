@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:walletticket_app/styles/styles.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -31,52 +32,95 @@ class _MenuScreenState extends State<MenuScreen> {
 
   Widget _buildBottomBar() {
     return Container(
+        height: 70,
         decoration: const BoxDecoration(
-            border: Border(
-          top: BorderSide(
-            color: Color(0xfff1f1f1),
-            width: 1.0,
-          ),
-        )),
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        height: 60,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              child: Icon(Icons.home,
-                  color: _currentIndex == 0
-                      ? Colors.black
-                      : const Color(0xff999999)),
-              onTap: () {
-                setState(() {
-                  _currentIndex = 0;
-                });
-              },
-            ),
-            GestureDetector(
-              child: Icon(Icons.search,
-                  color: _currentIndex == 1
-                      ? Colors.black
-                      : const Color(0xff999999)),
-              onTap: () {
-                setState(() {
-                  _currentIndex = 1;
-                });
-              },
-            ),
-            GestureDetector(
-              child: Icon(Icons.favorite,
-                  color: _currentIndex == 2
-                      ? Colors.black
-                      : const Color(0xff999999)),
-              onTap: () {
-                setState(() {
-                  _currentIndex = 2;
-                });
-              },
-            ),
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+          boxShadow: [
+            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
           ],
-        ));
+        ),
+        child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  child: Container(
+                      width: WalleTTicketStyle.containerIconBBSize,
+                      height: WalleTTicketStyle.containerIconBBSize,
+                      decoration: BoxDecoration(
+                        color: _currentIndex == 0
+                            ? Colors.grey[350]
+                            : Colors.white,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Icon(
+                        Icons.home,
+                        size: WalleTTicketStyle.iconBBSize,
+                        color: _currentIndex == 0
+                            ? WalleTTicketStyle.primaryColor
+                            : Colors.black,
+                      )),
+                  onTap: () {
+                    setState(() {
+                      _currentIndex = 0;
+                    });
+                  },
+                ),
+                WalleTTicketStyle.separatedIconsBB,
+                GestureDetector(
+                  child: Container(
+                      width: WalleTTicketStyle.containerIconBBSize,
+                      height: WalleTTicketStyle.containerIconBBSize,
+                      decoration: BoxDecoration(
+                        color: _currentIndex == 1
+                            ? Colors.grey[350]
+                            : Colors.white,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Icon(
+                        Icons.favorite_border,
+                        size: WalleTTicketStyle.iconBBSize,
+                        color: _currentIndex == 1
+                            ? WalleTTicketStyle.primaryColor
+                            : Colors.black,
+                      )),
+                  onTap: () {
+                    setState(() {
+                      _currentIndex = 1;
+                    });
+                  },
+                ),
+                WalleTTicketStyle.separatedIconsBB,
+                GestureDetector(
+                  child: Container(
+                    width: WalleTTicketStyle.containerIconBBSize,
+                    height: WalleTTicketStyle.containerIconBBSize,
+                    decoration: BoxDecoration(
+                      color:
+                          _currentIndex == 2 ? Colors.grey[350] : Colors.white,
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Icon(Icons.perm_identity,
+                        size: WalleTTicketStyle.iconBBSize,
+                        color: _currentIndex == 2
+                            ? WalleTTicketStyle.primaryColor
+                            : Colors.black),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      _currentIndex = 2;
+                    });
+                  },
+                ),
+              ],
+            )));
   }
 }
