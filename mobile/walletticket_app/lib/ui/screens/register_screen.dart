@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:walletticket_app/bloc/register/register_bloc.dart';
 import 'package:walletticket_app/models/register/register_dto.dart';
 import 'package:walletticket_app/repository/auth_repository/auth_repository.dart';
 import 'package:walletticket_app/repository/auth_repository/auth_repository_impl.dart';
+import 'package:walletticket_app/styles/styles.dart';
 import 'package:walletticket_app/ui/screens/login_screen.dart';
 
 import 'menu_screen.dart';
@@ -95,41 +98,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget _buildForm(BuildContext context) {
     return Container(
-        color: Colors.grey[200],
+        color: Colors.white,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
             child: Stack(children: [
-          Form(
-              key: _formKey,
-              child: Container(
-                margin: const EdgeInsets.only(
-                  top: 20,
-                ),
+          Center(
+            child: Form(
+                key: _formKey,
                 child: Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Image.asset(
+                      "assets/images/WalleTTicket-logo.png",
+                      width: 300,
+                    ),
                     Container(
-                        margin: const EdgeInsets.only(top: 10, bottom: 10),
+                        margin: const EdgeInsets.only(bottom: 30),
                         width: 300,
-                        child: Text("WalleTTicket",
+                        child: Text(
+                            "- Registrate para comenzar - ".toUpperCase(),
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 50, color: Colors.grey[900]))),
+                            style: const TextStyle(
+                                fontSize: 18, color: Colors.blue))),
                     Container(
-                        margin: const EdgeInsets.only(bottom: 20),
-                        width: 300,
-                        child: Text("Registrate para comenzar",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: 'MyArmaApp',
-                                fontSize: 30,
-                                color: Colors.grey[700]))),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        top: 20,
-                      ),
-                      width: 330,
+                      width: WalleTTicketStyle.formFieldWidth,
+                      height: WalleTTicketStyle.formFieldHeight,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.white),
@@ -138,34 +132,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                       child: TextFormField(
+                        textAlignVertical: TextAlignVertical.bottom,
                         controller: nameController,
                         onSaved: (String? value) {},
                         decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 2.0,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 2.0,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.all(20),
+                            enabledBorder: WalleTTicketStyle.formBorder,
+                            focusedBorder: WalleTTicketStyle.formBorder,
+                            contentPadding: WalleTTicketStyle.contentPadding,
                             fillColor: Colors.white,
-                            hintText: "Enter your name",
+                            hintText: "Escribe tu nombre",
                             hintStyle: const TextStyle(color: Colors.grey)),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(
-                        top: 20,
+                        top: 15,
                       ),
-                      width: 330,
+                      width: WalleTTicketStyle.formFieldWidth,
+                      height: WalleTTicketStyle.formFieldHeight,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.white),
@@ -174,34 +158,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                       child: TextFormField(
+                        textAlignVertical: TextAlignVertical.bottom,
                         controller: lastNameController,
                         onSaved: (String? value) {},
                         decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 2.0,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 2.0,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.all(20),
+                            enabledBorder: WalleTTicketStyle.formBorder,
+                            focusedBorder: WalleTTicketStyle.formBorder,
+                            contentPadding: WalleTTicketStyle.contentPadding,
                             fillColor: Colors.white,
-                            hintText: "Enter your lastName",
+                            hintText: "Escribe tus apellidos",
                             hintStyle: const TextStyle(color: Colors.grey)),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(
-                        top: 20,
+                        top: 15,
                       ),
-                      width: 330,
+                      width: WalleTTicketStyle.formFieldWidth,
+                      height: WalleTTicketStyle.formFieldHeight,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.white),
@@ -210,6 +184,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                       child: TextFormField(
+                        textAlignVertical: TextAlignVertical.bottom,
                         controller: emailController,
                         onSaved: (String? value) {
                           // This optional block of code can be used to run
@@ -217,135 +192,107 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         validator: (String? value) {
                           return (value == null || !value.contains('@'))
-                              ? 'Do not use the @ char.'
+                              ? 'Escrine un email válido'
                               : null;
                         },
                         decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 2.0,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 2.0,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.all(20),
+                            errorBorder: WalleTTicketStyle.formBorder,
+                            focusedErrorBorder: WalleTTicketStyle.formBorder,
+                            enabledBorder: WalleTTicketStyle.formBorder,
+                            focusedBorder: WalleTTicketStyle.formBorder,
+                            contentPadding: WalleTTicketStyle.contentPadding,
                             fillColor: Colors.white,
                             hintText: "Enter Email",
                             hintStyle: const TextStyle(color: Colors.grey)),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 20, right: 10),
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.white),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                          child: TextFormField(
-                            controller: passwordController,
-                            onSaved: (String? value) {},
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter some text';
-                              }
-                              return null;
+                    Container(
+                      margin: const EdgeInsets.only(top: 30),
+                      width: WalleTTicketStyle.formFieldWidth,
+                      height: WalleTTicketStyle.formFieldHeight,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.white),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                      child: TextFormField(
+                        textAlignVertical: TextAlignVertical.bottom,
+                        controller: passwordController,
+                        onSaved: (String? value) {
+                          // This optional block of code can be used to run
+                          // code when the user saves the form.
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Escribe una contraseña';
+                          }
+                          return null;
+                        },
+                        obscureText: _isObscure,
+                        decoration: InputDecoration(
+                          errorBorder: WalleTTicketStyle.formBorder,
+                          focusedErrorBorder: WalleTTicketStyle.formBorder,
+                          enabledBorder: WalleTTicketStyle.formBorder,
+                          focusedBorder: WalleTTicketStyle.formBorder,
+                          contentPadding: WalleTTicketStyle.contentPadding,
+                          fillColor: Colors.white,
+                          hintText: "Escribe tu contraseña",
+                          hintStyle: const TextStyle(color: Colors.grey),
+                          suffixIcon: IconButton(
+                            icon: Icon(_isObscure
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
                             },
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 2.0,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 2.0,
-                                  ),
-                                ),
-                                contentPadding: const EdgeInsets.all(20),
-                                fillColor: Colors.white,
-                                hintText: "Enter LastName",
-                                hintStyle: const TextStyle(color: Colors.grey)),
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 20, right: 10),
-                              width: 150,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(color: Colors.white),
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                              ),
-                              child: TextFormField(
-                                controller: password2Controller,
-                                onSaved: (String? value) {
-                                  // This optional block of code can be used to run
-                                  // code when the user saves the form.
-                                },
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter some text';
-                                  }
-                                  return null;
-                                },
-                                obscureText: _isObscure,
-                                decoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                  contentPadding: const EdgeInsets.all(20),
-                                  fillColor: Colors.white,
-                                  hintText: "Password",
-                                  hintStyle:
-                                      const TextStyle(color: Colors.grey),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(_isObscure
-                                        ? Icons.visibility
-                                        : Icons.visibility_off),
-                                    onPressed: () {
-                                      setState(() {
-                                        _isObscure = !_isObscure;
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      width: WalleTTicketStyle.formFieldWidth,
+                      height: WalleTTicketStyle.formFieldHeight,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.white),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
                         ),
-                      ],
+                      ),
+                      child: TextFormField(
+                        textAlignVertical: TextAlignVertical.bottom,
+                        controller: password2Controller,
+                        onSaved: (String? value) {
+                          // This optional block of code can be used to run
+                          // code when the user saves the form.
+                        },
+                        obscureText: _isObscure,
+                        decoration: InputDecoration(
+                          errorBorder: WalleTTicketStyle.formBorder,
+                          focusedErrorBorder: WalleTTicketStyle.formBorder,
+                          enabledBorder: WalleTTicketStyle.formBorder,
+                          focusedBorder: WalleTTicketStyle.formBorder,
+                          contentPadding: WalleTTicketStyle.contentPadding,
+                          fillColor: Colors.white,
+                          hintText: "Repita la contraseña",
+                          hintStyle: const TextStyle(color: Colors.grey),
+                          suffixIcon: IconButton(
+                            icon: Icon(_isObscure
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -361,17 +308,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                       },
                       child: Container(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          width: 200,
                           margin: const EdgeInsets.only(
-                              top: 10, left: 30, right: 30),
-                          padding: const EdgeInsets.only(
-                            top: 15,
+                              top: 20, left: 30, right: 30),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 13,
                           ),
                           decoration: BoxDecoration(
-                              color: Colors.black54,
-                              border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.circular(10)),
+                              color: WalleTTicketStyle.blueButtonB,
+                              borderRadius: BorderRadius.circular(18)),
                           child: Text(
                             'Register'.toUpperCase(),
                             style: const TextStyle(color: Colors.white),
@@ -379,19 +325,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           )),
                     ),
                   ],
-                )),
-              ))
+                ))),
+          )
         ])));
-  }
-
-  void uploadImage(String file) {
-    RegisterDto dto = RegisterDto(
-      name: nameController.text,
-      lastName: lastNameController.text,
-      email: emailController.text,
-      password: passwordController.text,
-    );
-
-    AuthRepositoryImpl().register(dto);
   }
 }
