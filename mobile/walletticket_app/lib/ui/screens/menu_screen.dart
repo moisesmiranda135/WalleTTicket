@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walletticket_app/styles/styles.dart';
+import 'package:walletticket_app/ui/screens/profile_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -22,7 +23,11 @@ class _MenuScreenState extends State<MenuScreen> {
     super.dispose();
   }
 
-  List<Widget> pages = [const Text("P1"), const Text("P2"), const Text("P3")];
+  List<Widget> pages = [
+    const Text("P1"),
+    const Text("P2dddddddddddd"),
+    const ProfileScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
