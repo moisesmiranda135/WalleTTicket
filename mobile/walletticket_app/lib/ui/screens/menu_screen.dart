@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walletticket_app/styles/styles.dart';
+import 'package:walletticket_app/ui/screens/home_screen.dart';
 import 'package:walletticket_app/ui/screens/profile_screen.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   List<Widget> pages = [
-    const Text("P1"),
+    const HomeScreen(),
     const Text("P2dddddddddddd"),
     const ProfileScreen()
   ];
@@ -32,7 +33,11 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: pages[_currentIndex], bottomNavigationBar: _buildBottomBar());
+        appBar: AppBar(
+          title: Text('WalletTicket'),
+        ),
+        body: pages[_currentIndex],
+        bottomNavigationBar: _buildBottomBar());
   }
 
   Widget _buildBottomBar() {

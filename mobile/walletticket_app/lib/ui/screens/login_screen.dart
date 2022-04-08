@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     await SharedPreferences.getInstance();
                 preferences.setString(
                     Constant.token, state.loginResponse.token);
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const MenuScreen()),
                 );
@@ -127,11 +127,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             : null;
                       },
                       decoration: InputDecoration(
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(10),
                           errorBorder: WalleTTicketStyle.formBorder,
                           focusedErrorBorder: WalleTTicketStyle.formBorder,
                           enabledBorder: WalleTTicketStyle.formBorder,
                           focusedBorder: WalleTTicketStyle.formBorder,
-                          contentPadding: WalleTTicketStyle.contentPadding,
                           fillColor: Colors.black,
                           hintText: "Escribe tu email",
                           hintStyle: const TextStyle(color: Colors.grey)),

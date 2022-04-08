@@ -56,213 +56,222 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      color: Colors.grey[300],
-      child: Center(
-        child: Column(
-          children: [
-            Container(
-              width: 360,
-              height: 50,
-              margin: const EdgeInsets.only(top: 40),
-              child: Stack(
-                children: const [
-                  Positioned(
-                      top: 25,
-                      left: 20,
-                      child: Text(
-                        "Perfil de Usuario",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.w800),
-                      ))
-                ],
-              ),
-            ),
-            Container(
+        body: SingleChildScrollView(
+      child: Container(
+        color: Colors.grey[300],
+        child: Center(
+          child: Column(
+            children: [
+              Container(
                 width: 360,
-                height: 580,
-                margin: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 40, left: 40),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Términos y condiciones de uso",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Política y privacidad",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(Icons.edit_outlined,
-                              size: 25, color: WalleTTicketStyle.primaryColor),
-                          Text(
-                            "  Editar perfil",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(Icons.lock,
-                              size: 25, color: WalleTTicketStyle.primaryColor),
-                          Text(
-                            "  Cambiar contraseña",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin:
-                          const EdgeInsets.only(top: 40, left: 40, bottom: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Contacto",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(Icons.email,
-                              size: 25, color: WalleTTicketStyle.primaryColor),
-                          Text(
-                            "  Email: contacto@walletticket.com",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(FontAwesomeIcons.twitter,
-                              size: 25, color: WalleTTicketStyle.primaryColor),
-                          Text(
-                            "  Twitter: @walletticket",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(FontAwesomeIcons.instagram,
-                              size: 25, color: WalleTTicketStyle.primaryColor),
-                          Text(
-                            "  Instagram: @walletticket",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(FontAwesomeIcons.facebook,
-                              size: 25, color: WalleTTicketStyle.primaryColor),
-                          Text(
-                            "  Facebook : WalletTicket company",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 30, top: 50),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Icon(Icons.vpn_key,
-                              size: 25, color: WalleTTicketStyle.primaryColor),
-                          Text(
-                            "  Cerrar Sesión",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
+                height: 50,
+                margin: const EdgeInsets.only(top: 5),
+                child: Stack(
+                  children: const [
+                    Positioned(
+                        top: 25,
+                        left: 20,
+                        child: Text(
+                          "Perfil de Usuario",
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.w800),
+                        ))
                   ],
-                )),
-          ],
+                ),
+              ),
+              Container(
+                  width: 360,
+                  height: 500,
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Icon(Icons.edit_outlined,
+                                size: 25,
+                                color: WalleTTicketStyle.primaryColor),
+                            Text(
+                              "  Editar perfil",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Icon(Icons.lock,
+                                size: 25,
+                                color: WalleTTicketStyle.primaryColor),
+                            Text(
+                              "  Cambiar contraseña",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 30, top: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Icon(Icons.vpn_key,
+                                size: 25,
+                                color: WalleTTicketStyle.primaryColor),
+                            Text(
+                              "  Cerrar Sesión",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                            top: 40, left: 40, bottom: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Contacto",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Icon(Icons.email,
+                                size: 25,
+                                color: WalleTTicketStyle.primaryColor),
+                            Text(
+                              "  Email: contacto@walletticket.com",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Icon(FontAwesomeIcons.twitter,
+                                size: 25,
+                                color: WalleTTicketStyle.primaryColor),
+                            Text(
+                              "  Twitter: @walletticket",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Icon(FontAwesomeIcons.instagram,
+                                size: 25,
+                                color: WalleTTicketStyle.primaryColor),
+                            Text(
+                              "  Instagram: @walletticket",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Icon(FontAwesomeIcons.facebook,
+                                size: 25,
+                                color: WalleTTicketStyle.primaryColor),
+                            Text(
+                              "  Facebook : WalletTicket company",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 25, left: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Términos y condiciones de uso",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Política y privacidad",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     ));
