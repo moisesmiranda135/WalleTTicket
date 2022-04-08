@@ -17,6 +17,7 @@ public class GetUserDto {
     private String name;
     private String lastName;
     private String email;
+    private String avatarUrl;
 
     private String role;
 }

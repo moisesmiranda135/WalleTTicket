@@ -1,6 +1,7 @@
 package com.salesianos.triana.dam.walleTTicket.users.services;
 
 import com.salesianos.triana.dam.walleTTicket.services.base.BaseService;
+import com.salesianos.triana.dam.walleTTicket.services.impl.S3Service;
 import com.salesianos.triana.dam.walleTTicket.users.dto.CreateUserDto;
 import com.salesianos.triana.dam.walleTTicket.users.models.Roles;
 import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -22,6 +24,7 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
 
     private final PasswordEncoder passwordEncoder;
 
+    private final S3Service s3Service;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -40,13 +43,15 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
 
 
 
-    public UserEntity saveUser(CreateUserDto newUser){
+    public UserEntity saveUser(CreateUserDto newUser, MultipartFile file){
+        String avatarUrl=s3Service.save(file);
 
             UserEntity userEntity = UserEntity.builder()
                     .name(newUser.getName())
                     .lastName(newUser.getLastName())
                     .password(passwordEncoder.encode(newUser.getPassword()))
                     .email(newUser.getEmail())
+                    .avatarUrl(avatarUrl)
                     .rol(Roles.USER)
                     .build();
 
