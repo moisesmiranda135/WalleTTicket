@@ -1,0 +1,1 @@
+insert into user (name, last_name, email, password, rol) values ('Admin', 'Admin', 'admin@walletticket.com','123456', 'ADMIN');
