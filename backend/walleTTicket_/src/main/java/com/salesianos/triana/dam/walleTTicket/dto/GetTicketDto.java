@@ -1,9 +1,6 @@
 package com.salesianos.triana.dam.walleTTicket.dto;
 
-import com.salesianos.triana.dam.walleTTicket.users.models.User;
 import lombok.*;
-
-import javax.persistence.ManyToOne;
 
 @Getter
 @Setter

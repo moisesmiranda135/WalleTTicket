@@ -3,7 +3,7 @@ package com.salesianos.triana.dam.walleTTicket.security;
 import com.salesianos.triana.dam.walleTTicket.security.dto.JwtUserResponse;
 import com.salesianos.triana.dam.walleTTicket.security.dto.LoginDto;
 import com.salesianos.triana.dam.walleTTicket.security.jwt.JwtProvider;
-import com.salesianos.triana.dam.walleTTicket.users.models.User;
+import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
@@ -45,7 +43,7 @@ public class AuthenticationController {
         String jwt = jwtProvider.generateToken(authentication);
 
 
-        User u = (User) authentication.getPrincipal();
+        UserEntity u = (UserEntity) authentication.getPrincipal();
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(convertUserToJwtUserResponse(u, jwt));
@@ -53,12 +51,12 @@ public class AuthenticationController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<?> aboutMe(@AuthenticationPrincipal User u){
+    public ResponseEntity<?> aboutMe(@AuthenticationPrincipal UserEntity u){
         return ResponseEntity.ok(convertUserToJwtUserResponse(u, null));
     }
 
 
-    private JwtUserResponse convertUserToJwtUserResponse(User u, String jwt) {
+    private JwtUserResponse convertUserToJwtUserResponse(UserEntity u, String jwt) {
         return JwtUserResponse.builder()
                 .name(u.getName())
                 .lastName(u.getLastName())

@@ -1,7 +1,7 @@
 package com.salesianos.triana.dam.walleTTicket.model;
 
 
-import com.salesianos.triana.dam.walleTTicket.users.models.User;
+import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,10 +23,12 @@ public class Ticket {
     private String price;
     private String dateInit;
     private String dateEnd;
-    private String image;
+    private String ticketImage;
+    private String productImage;
+    private Boolean isFavorite;
 
     @ManyToOne
-    private User user;
+    private UserEntity userEntity;
 
     // ocjeto categoria
     // objeto compañia

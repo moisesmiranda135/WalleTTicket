@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User implements UserDetails {
+public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
-    @OneToMany (mappedBy ="user")
+    @OneToMany (mappedBy = "userEntity")
     private List<Ticket> ticketsList = new ArrayList<>();
 
 

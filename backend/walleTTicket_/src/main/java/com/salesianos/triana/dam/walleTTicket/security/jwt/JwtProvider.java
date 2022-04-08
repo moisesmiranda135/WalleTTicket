@@ -1,6 +1,6 @@
 package com.salesianos.triana.dam.walleTTicket.security.jwt;
 
-import com.salesianos.triana.dam.walleTTicket.users.models.User;
+import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
@@ -40,7 +40,7 @@ public class JwtProvider {
 
     public String generateToken(Authentication authentication) {
 
-        User u = (User) authentication.getPrincipal();
+        UserEntity u = (UserEntity) authentication.getPrincipal();
 
         Date tokenExpirationDate = Date
                 .from(LocalDateTime

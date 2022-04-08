@@ -3,7 +3,7 @@ package com.salesianos.triana.dam.walleTTicket.users.controller;
 import com.salesianos.triana.dam.walleTTicket.users.dto.CreateUserDto;
 import com.salesianos.triana.dam.walleTTicket.users.dto.GetUserDto;
 import com.salesianos.triana.dam.walleTTicket.users.dto.UserDtoConverter;
-import com.salesianos.triana.dam.walleTTicket.users.models.User;
+import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import com.salesianos.triana.dam.walleTTicket.users.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class UserController {
 
     @PostMapping("/auth/register/user")
     public ResponseEntity<GetUserDto> nuevoUser(@RequestBody CreateUserDto newUser) {
-        User saved = userService.saveUser(newUser);
+        UserEntity saved = userService.saveUser(newUser);
 
         if (saved == null)
             return ResponseEntity.badRequest().build();
@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping("/auth/register/admin")
     public ResponseEntity<GetUserDto> nuevoAdministrador(@RequestBody CreateUserDto newUser) {
-        User saved = userService.saveAdmin(newUser);
+        UserEntity saved = userService.saveAdmin(newUser);
 
         if (saved == null)
             return ResponseEntity.badRequest().build();

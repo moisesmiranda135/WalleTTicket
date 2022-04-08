@@ -1,6 +1,6 @@
 package com.salesianos.triana.dam.walleTTicket.security.jwt;
 
-import com.salesianos.triana.dam.walleTTicket.users.models.User;
+import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import com.salesianos.triana.dam.walleTTicket.users.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -36,10 +36,10 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
                 Long userId = jwtProvider.getUserIdFromJwt(token);
 
-                Optional<User> userEntity = userService.findById(userId);
+                Optional<UserEntity> userEntity = userService.findById(userId);
 
                 if (userEntity.isPresent()) {
-                    User user = userEntity.get();
+                    UserEntity user = userEntity.get();
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(
                                     user,
