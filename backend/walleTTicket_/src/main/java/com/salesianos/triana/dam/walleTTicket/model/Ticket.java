@@ -5,6 +5,7 @@ import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -21,8 +22,8 @@ public class Ticket {
     private String title;
     private String description;
     private String price;
-    private String dateInit;
-    private String dateEnd;
+    private LocalDate dateInit;
+    private LocalDate  dateEnd;
     private String ticketImage;
     private String productImage;
     private Boolean isFavorite;
@@ -30,8 +31,9 @@ public class Ticket {
     @ManyToOne
     private UserEntity userEntity;
 
-    // ocjeto categoria
-    // objeto compañia
+    @ManyToOne
+    private Category category;
 
-
+    @ManyToOne
+    private Company company;
 }

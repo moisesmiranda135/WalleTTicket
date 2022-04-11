@@ -1,11 +1,6 @@
 package com.salesianos.triana.dam.walleTTicket.users.dto;
 
-import com.salesianos.triana.dam.walleTTicket.dto.GetTicketDto;
-import com.salesianos.triana.dam.walleTTicket.model.Ticket;
-import com.salesianos.triana.dam.walleTTicket.users.models.Roles;
 import lombok.*;
-
-import java.util.List;
 
 @Getter
 @Setter
