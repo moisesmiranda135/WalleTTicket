@@ -21,9 +21,8 @@ public class Category {
     private String title;
 
     //Texto necesario para pintar el icono, el usuario seleccionará una imagen
-
     private String icon;
-    private String image;
+
 
     @OneToMany(mappedBy = "category")
     private List<Ticket> ticketsList = new ArrayList<>();

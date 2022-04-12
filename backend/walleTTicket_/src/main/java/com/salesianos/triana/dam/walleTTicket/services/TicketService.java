@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface TicketService {
-    CreateTicketDto save(CreateTicketDto createPublicacionesDto, MultipartFile file, UserEntity u) throws IOException;
-    List<GetTicketDto> findAll();
+    CreateTicketDto save(CreateTicketDto createTicketDto, MultipartFile fileTicket, MultipartFile fileProduct, UserEntity u) throws IOException;
+    List<GetTicketDto> findAllUserLogged(UserEntity u);
 
 }

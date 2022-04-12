@@ -11,9 +11,10 @@ import java.time.LocalDate;
 @Builder
 public class GetTicketDto {
 
+    private Long id;
     private String title;
     private String description;
-    private String price;
+    private Double price;
     private LocalDate dateInit;
     private LocalDate  dateEnd;
     private String ticketImage;

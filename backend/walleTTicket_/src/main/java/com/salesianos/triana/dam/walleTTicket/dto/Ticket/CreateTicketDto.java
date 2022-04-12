@@ -10,15 +10,16 @@ import java.time.LocalDate;
 @Builder
 public class CreateTicketDto {
 
+    private Long id;
     private String title;
     private String description;
-    private String price;
+    private Double price;
     private LocalDate dateInit;
     private LocalDate  dateEnd;
     private String ticketImage;
     private String productImage;
     private Boolean isFavorite;
 
-    private String categoryName;
-    private String companyName;
+    private Long categoryId;
+    private Long companyId;
 }
