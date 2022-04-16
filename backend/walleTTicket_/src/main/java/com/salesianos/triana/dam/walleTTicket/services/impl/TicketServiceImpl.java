@@ -81,7 +81,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<GetTicketDto> findAllUserLogged(UserEntity u) {
+    public List<GetTicketDto> findAll(UserEntity u) {
 
         List<Ticket> data = repository.findAll();
 

@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface TicketService {
     CreateTicketDto save(CreateTicketDto createTicketDto, MultipartFile fileTicket, MultipartFile fileProduct, UserEntity u) throws IOException;
-    List<GetTicketDto> findAllUserLogged(UserEntity u);
+    List<GetTicketDto> findAll(UserEntity u);
 
 }

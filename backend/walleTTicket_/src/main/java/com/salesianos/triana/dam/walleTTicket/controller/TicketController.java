@@ -36,6 +36,6 @@ public class TicketController {
 
     @GetMapping("/")
     public ResponseEntity<?> list(@AuthenticationPrincipal UserEntity u) {
-        return ResponseEntity.ok(ticketService.findAllUserLogged(u));
+        return ResponseEntity.ok(ticketService.findAll(u));
     }
 }

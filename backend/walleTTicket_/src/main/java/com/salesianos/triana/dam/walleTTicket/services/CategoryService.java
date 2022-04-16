@@ -12,4 +12,7 @@ public interface CategoryService {
 
     CreateCategoryDto save(CreateCategoryDto createCategoryDto);
     List<GetCategoryDto> findAll();
+    GetCategoryDto findById(Long id);
+    CreateCategoryDto edit(CreateCategoryDto category, Long id);
+    void deleteById (Long id);
 }

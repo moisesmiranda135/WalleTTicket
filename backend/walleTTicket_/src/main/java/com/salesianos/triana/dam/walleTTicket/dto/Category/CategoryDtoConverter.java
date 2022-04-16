@@ -23,4 +23,12 @@ public class CategoryDtoConverter {
                 .build();
     }
 
+    public CreateCategoryDto editCategory(Category category){
+        return CreateCategoryDto.builder()
+                .id(category.getId())
+                .icon(category.getIcon())
+                .title(category.getTitle())
+                .build();
+    }
+
 }
