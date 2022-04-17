@@ -58,8 +58,8 @@ public class TicketServiceImpl implements TicketService {
                 .company(companyExist.get())
                 .dateInit(createTicketDto.getDateInit())
                 .dateEnd(createTicketDto.getDateEnd())
-                .ticketImage(createTicketDto.getTicketImage())
-                .productImage(createTicketDto.getProductImage())
+                .ticketImage(ticketUrl)
+                .productImage(productUrl)
                 .isFavorite(createTicketDto.getIsFavorite())
                 .userEntity(u)
                 .build());
