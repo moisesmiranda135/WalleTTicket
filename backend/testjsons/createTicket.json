@@ -5,6 +5,7 @@
     "dateInit": "2021-03-01",
     "dateEnd": "2023-03-01",
     "categoryId": 1,
-    "companyId": 1
+    "companyId": 1,
+    "isFavorite": false
 
    } 
