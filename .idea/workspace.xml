@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e75c6689-a751-4ab9-b09e-eb127cf7c016" name="Changes" comment="" />
+    <list default="true" id="5f8b60fa-bb14-4f63-ab4b-16bb88944ec7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/WalleTTicketApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/dto/GetTicketDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/model/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/PasswordEncoderConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/dto/JwtUserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/dto/LoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/jwt/JwtAccessDeniedHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/jwt/JwtAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/jwt/JwtAuthorizationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/security/jwt/JwtProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/services/base/BaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/dto/CreateUserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/dto/GetUserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/dto/UserDtoConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/models/Roles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/repos/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/java/com/salesianos/triana/dam/walleTTicket/users/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/main/resources/import.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/walleTTicket_/src/test/java/com/salesianos/triana/dam/walleTTicket/WalleTTicketApplicationTests.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,10 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="27dyHhZR8pI6zbQ6QUM6oEOzHK4" />
+  <component name="ProjectId" id="27VZJg8uPbjHwAaWiK3C3Y3ux0l" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -25,11 +53,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e75c6689-a751-4ab9-b09e-eb127cf7c016" name="Changes" comment="" />
-      <created>1649664172552</created>
+      <changelist id="5f8b60fa-bb14-4f63-ab4b-16bb88944ec7" name="Changes" comment="" />
+      <created>1649407144990</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1649664172552</updated>
+      <updated>1649407144990</updated>
     </task>
     <servers />
   </component>

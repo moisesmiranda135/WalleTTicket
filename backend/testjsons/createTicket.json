@@ -1,0 +1,11 @@
+{
+    "title": "Mi primer portátil",
+    "description": "Portatil que me compré en bach",
+    "price": 349.99,
+    "dateInit": "2021-03-01",
+    "dateEnd": "2023-03-01",
+    "categoryId": 1,
+    "companyId": 1,
+    "isFavorite": false
+
+   } 
