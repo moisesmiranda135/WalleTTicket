@@ -50,10 +50,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
 
-                .antMatchers(HttpMethod.POST, "/auth/register/admin").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/auth/**").anonymous()
+                .antMatchers(HttpMethod.POST, "/auth/register/admin").anonymous()
+                .antMatchers(HttpMethod.POST, "/auth/register/employee").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/auth/register/user").anonymous()
+                .antMatchers(HttpMethod.POST,"/auth/login").anonymous()
 
-                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/auth/all").hasAnyRole("ADMIN","EMPLOYEE")
+
+                .antMatchers(HttpMethod.PUT, "/user/{id}").authenticated()
+                .antMatchers(HttpMethod.PUT, "/employee/{id}").hasAnyRole("ADMIN","EMPLOYEE")
+                .antMatchers(HttpMethod.PUT, "/admin/{id}").hasRole("ADMIN")
+
+                .antMatchers(HttpMethod.POST, "/user/enabled/").hasAnyRole("ADMIN","EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/user/disabled/").hasAnyRole("ADMIN","EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/employee/enabled/").hasAnyRole("ADMIN","EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/employee/disabled/").hasAnyRole("ADMIN","EMPLOYEE")
+
+                .antMatchers(HttpMethod.DELETE, "/user").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/employee").hasRole("ADMIN")
+
                 .anyRequest().authenticated();
 
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);

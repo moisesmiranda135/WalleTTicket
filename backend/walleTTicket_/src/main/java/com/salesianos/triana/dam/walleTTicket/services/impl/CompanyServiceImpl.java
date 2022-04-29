@@ -95,7 +95,6 @@ public class CompanyServiceImpl implements CompanyService {
             repository.save(c);
             return converter.convertCompanyToEditCompanyDto(c);
         }).orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), Company.class));
-
     }
 
     @Override

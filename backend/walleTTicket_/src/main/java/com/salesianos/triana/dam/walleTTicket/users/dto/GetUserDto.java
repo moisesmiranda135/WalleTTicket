@@ -13,6 +13,7 @@ public class GetUserDto {
     private String lastName;
     private String email;
     private String avatarUrl;
+    private boolean isEnabled;
 
     private String role;
 }

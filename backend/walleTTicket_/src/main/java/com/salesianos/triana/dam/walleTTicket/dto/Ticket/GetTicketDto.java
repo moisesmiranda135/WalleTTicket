@@ -23,4 +23,7 @@ public class GetTicketDto {
 
     private String categoryName;
     private String companyName;
+    private String userName;
+    private String userLastName;
+    private String userEmail;
 }
