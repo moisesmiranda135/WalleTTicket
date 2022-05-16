@@ -1,0 +1,28 @@
+mat-dialog-container {
+    background: rgb(209, 128, 128) !important;
+}
+
+.mainTableStudy {
+    mat-cell{
+        color: rgb(0, 0, 0);
+    }
+}
+
+.breadcrumb-item{
+    color: rgb(255, 255, 255);
+    a{
+        color: rgb(90, 171, 247);
+    }
+}
+
+.hiperStudy{
+    color: rgb(90, 171, 247) !important;
+}
+
+.chainStudy1{
+    display: none !important;
+}
+
+.chainStudy2{
+    display: inline !important;
+}

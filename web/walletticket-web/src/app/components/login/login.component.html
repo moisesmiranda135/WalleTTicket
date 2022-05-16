@@ -1,0 +1,24 @@
+<div class="main">
+  <mat-card class="card">
+    <mat-card-content>
+      <div class="w100 color">
+        <img src="../../../assets/img/icons/WalleTTicket-logo.png" alt="Logo WalleTTicket" class="w-45">
+        <h3>Acceso a Administración de WalleTTicket</h3>
+        <p>Inserte su usuario y contraseña</p>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Correo electrónico" autocomplete="off" [(ngModel)]="loginDto.email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Contraseña" type="password" autocomplete="off" [(ngModel)]="loginDto.password">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" class="Pmt-2 Pmb-1">
+        <button mat-raised-button color="accent" class="w90"><h3 class="login" (click)="doLogin()">Acceder</h3></button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

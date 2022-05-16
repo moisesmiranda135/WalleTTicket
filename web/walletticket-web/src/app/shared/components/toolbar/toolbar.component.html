@@ -1,0 +1,39 @@
+<div class="contenido">
+  <div class="nav" fxLayout="row" fxLayoutAlign="space-between center">
+    <a routerLink="/home" class="Pml-05" fxFlex="30" fxLayout="row" fxLayoutAlign="start center">
+      <b>
+        <img src="../../../../assets/img/icons/WalleTTicket-icon.jpg" alt="homepage" class="logo" style="width: 80px;">
+      </b>
+      <div style="margin-left: 20px;">
+        <h2 class="enlace">Administración de WalleTTicket</h2>
+      </div>
+      
+    </a>
+
+    <div fxLayout="row" fxFlex="40" fxLayoutAlign="space-between center">
+
+      <button fxFlex="25" mat-button [matMenuTriggerFor]="axaMenu" class="toolbar-icon w40">
+        <mat-icon class="Pmr-2">architecture</mat-icon> Categorias <mat-icon class="Pmr-2">expand_more</mat-icon>
+      </button>
+
+      <mat-menu #axaMenu="matMenu" yPosition="above">
+        <button mat-menu-item>1</button>
+        <button mat-menu-item>2</button>
+        <button mat-menu-item>3</button>
+      </mat-menu>
+
+      <button fxFlex="25" mat-button [matMenuTriggerFor]="axaMenu" class="toolbar-icon w40">
+        <mat-icon class="Pmr-2">architecture</mat-icon> Compañias <mat-icon class="Pmr-2">expand_more</mat-icon>
+      </button>
+
+    </div>
+
+    <div fxLayout="row" fxFlex="10" fxLayoutAlign="end center">
+      <button mat-icon-button (click)="exit()" class="Pmr-05">
+        <mat-icon class="toolbar-icon">logout</mat-icon>
+      </button>
+    </div>
+
+  </div>
+
+</div>
