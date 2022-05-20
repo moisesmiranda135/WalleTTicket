@@ -33,6 +33,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTreeModule} from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
   imports: [
@@ -103,7 +104,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSortModule,
     MatPaginatorModule,
     MatTreeModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule, 
+    ReactiveFormsModule
   ]
 })
 export class MaterialImportsModule { }

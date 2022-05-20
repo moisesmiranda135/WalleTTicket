@@ -133,16 +133,36 @@ public class TicketServiceImpl implements TicketService {
 
          */
 
+        /*
+        Specification<Ticket> specTitle = new Specification<Ticket>() {
+            @Override
+            public Predicate toPredicate(Root<Ticket> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                if (title.isPresent()){
+                    return criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + title.get().toLowerCase() + "%");
+                }
+                return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
+            }
+        };
+         */
+
+        Specification<Ticket> sTitle = (root, query, criteriaBuilder) -> {
+            if (title.isPresent()){
+                return criteriaBuilder.like(criteriaBuilder.lower(root.get("title")), "%" + title.get().toLowerCase() + "%");
+                //return criteriaBuilder.equal(root.get("title"), title.get());
+            }
+            return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
+        };
+
         Specification<Ticket> sUser = (root, query, criteriaBuilder) -> {
-            if (idUser.isPresent()){
+            if (u != null){
                 //return criteriaBuilder.like(criteriaBuilder.lower(root.get("userEntityId")), "%" + idUser.get() + "%");
-                criteriaBuilder.equal(root.get("userEntity"), u);
+                return criteriaBuilder.equal(root.get("userEntity"), u);
             }
             return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
         };
 
         //Specification<Ticket> all = specTitle.and(specUser);
-        Specification<Ticket> all = sUser.and(specTitle);
+        Specification<Ticket> all = sUser.and(sTitle);
 
         List<Ticket> data = repository.findAll(all);
 

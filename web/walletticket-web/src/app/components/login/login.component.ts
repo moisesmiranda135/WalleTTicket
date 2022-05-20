@@ -20,8 +20,16 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
     this.authService.login(this.loginDto).subscribe(loginResult => {
-      this.router.navigate(['home']);
-      this.authService.setLocalRequestToken(loginResult.token);
+      if (loginResult.role == "USER") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de Autentificación',
+          text: 'El email o la contraseña no son correctos',
+        })
+      }else {
+        this.router.navigate(['home']);
+        this.authService.setLocalRequestToken(loginResult.token);
+      }
     }, error => {
       console.log(error)
       Swal.fire({

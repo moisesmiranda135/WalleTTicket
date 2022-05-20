@@ -12,13 +12,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CoreModule } from '@angular/flex-layout';
+import { CategoryComponent } from './components/dashboard/category/category.component';
+import { CategoryFormDialogComponent } from './components/dashboard/category/category-form-dialog/category-form-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CategoryComponent,
+    CategoryFormDialogComponent
   ],
   imports: [
     BrowserModule,
