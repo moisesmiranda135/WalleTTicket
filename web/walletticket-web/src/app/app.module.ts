@@ -1,3 +1,5 @@
+import { CreateEmployeeDialogComponent } from './components/dashboard/employees/create-employee-dialog/create-employee-dialog.component';
+import { EmployeesComponent } from './components/dashboard/employees/employees.component';
 import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
 import { HomeComponent } from './components/dashboard/home/home.component';
 import { MaterialImportsModule } from './core/modules/material-imports.module';
@@ -22,7 +24,9 @@ import { CategoryFormDialogComponent } from './components/dashboard/category/cat
     HomeComponent,
     ToolbarComponent,
     CategoryComponent,
-    CategoryFormDialogComponent
+    CategoryFormDialogComponent,
+    EmployeesComponent,
+    CreateEmployeeDialogComponent
   ],
   imports: [
     BrowserModule,

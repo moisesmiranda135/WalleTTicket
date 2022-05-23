@@ -34,4 +34,13 @@ export class AuthService {
     return localStorage.getItem('request_token');
   }
 
+
+  setRole(role: string) {
+    localStorage.setItem('role', role);
+  }
+
+  getRole() {
+    return localStorage.getItem('role');
+  }
+
 }

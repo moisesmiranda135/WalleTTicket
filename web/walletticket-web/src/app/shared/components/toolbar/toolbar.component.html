@@ -20,11 +20,11 @@
         <mat-icon class="Pmr-2">business</mat-icon> Compañias 
       </button>
 
-      <button fxFlex="25" mat-button class="toolbar-icon w40">
+      <button fxFlex="25" mat-button class="toolbar-icon w40" routerLink="/employees" *ngIf="userRole === 'ADMIN'">
         <mat-icon class="Pmr-2">group</mat-icon> Empleados 
       </button>
 
-      <button fxFlex="25" mat-button class="toolbar-icon w40">
+      <button fxFlex="25" mat-button class="toolbar-icon w40" *ngIf="userRole === 'ADMIN'">
         <mat-icon class="Pmr-2">groups</mat-icon> Administradores 
       </button>
 

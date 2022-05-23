@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       }else {
         this.router.navigate(['home']);
         this.authService.setLocalRequestToken(loginResult.token);
+        this.authService.setRole(loginResult.role);
       }
     }, error => {
       console.log(error)

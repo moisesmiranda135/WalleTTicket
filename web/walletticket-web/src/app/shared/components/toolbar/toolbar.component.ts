@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  userRole!: string;
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    this.userRole = this.authService.getRole() || '';
   }
 
   exit(){

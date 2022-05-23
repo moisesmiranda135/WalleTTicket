@@ -42,7 +42,7 @@ public class UserController {
 
     @PostMapping("/auth/register/employee")
     public ResponseEntity<GetUserDto> newEmployee(@RequestBody CreateUserDto newUser) {
-        UserEntity saved = userService.saveAdmin(newUser);
+        UserEntity saved = userService.saveEmployee(newUser);
 
         if (saved == null)
             return ResponseEntity.badRequest().build();
@@ -53,6 +53,11 @@ public class UserController {
     @GetMapping("/auth/all")
     public ResponseEntity<?> listAll() {
         return ResponseEntity.ok(userService.findAll());
+    }
+
+    @GetMapping("/auth/all/employee")
+    public ResponseEntity<?> listAllEmployee() {
+        return ResponseEntity.ok(userService.findAllEmployee());
     }
 
     @PutMapping("/user/{id}")
@@ -85,25 +90,25 @@ public class UserController {
 
     @PostMapping("/user/enabled/{id}")
     public ResponseEntity<?> enabledUser(@PathVariable Long id, @AuthenticationPrincipal UserEntity u) {
-        userService.enabledUser(id, u);
+        userService.enabledUser(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/user/disabled/{id}")
     public ResponseEntity<?> disabledUser(@PathVariable Long id, @AuthenticationPrincipal UserEntity u) {
-        userService.disbledUser(id, u);
+        userService.disbledUser(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/employee/enabled/{id}")
-    public ResponseEntity<?> enabledEmployee(@PathVariable Long id, @AuthenticationPrincipal UserEntity u) {
-        userService.enabledUser(id, u);
+    public ResponseEntity<?> enabledEmployee(@PathVariable Long id) {
+        userService.enabledUser(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/employee/disabled/{id}")
-    public ResponseEntity<?> disabledEmployee(@PathVariable Long id, @AuthenticationPrincipal UserEntity u) {
-        userService.disbledUser(id, u);
+    public ResponseEntity<?> disabledEmployee(@PathVariable Long id) {
+        userService.disbledUser(id);
         return ResponseEntity.noContent().build();
     }
 

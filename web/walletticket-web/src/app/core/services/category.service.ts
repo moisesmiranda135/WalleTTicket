@@ -31,12 +31,6 @@ export class CategoryService {
 
   createCategory(category: CategoryResponse): Observable<any> {
     let requestUrl = `${this.categoryBaseUrl}/`;
-
-    let headers = new HttpHeaders({'Content-Type':'multipart/form-data'});
-    let formData = new FormData();
-
-    // formData.append("json", category);
-
     return this.http.post<OkApiResponseList<CategoryResponse>>(requestUrl, category, DEFAULT_HEADERS);
   }
 

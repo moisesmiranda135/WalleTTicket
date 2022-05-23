@@ -62,6 +62,7 @@ public class AuthenticationController {
                 .lastName(u.getLastName())
                 .email(u.getEmail())
                 .role(u.getRol().name())
+                .isEnabled(u.isEnabled())
                 .token(jwt)
                 .build();
     }

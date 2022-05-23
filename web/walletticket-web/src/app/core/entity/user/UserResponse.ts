@@ -1,4 +1,4 @@
-export interface AuthLoginResponse {
+export interface UserResponse {
     email: string;
     name: string;
     lastName: string;

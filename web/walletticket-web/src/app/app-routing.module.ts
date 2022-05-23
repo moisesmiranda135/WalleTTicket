@@ -1,3 +1,4 @@
+import { EmployeesComponent } from './components/dashboard/employees/employees.component';
 import { HomeComponent } from './components/dashboard/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +15,10 @@ const routes: Routes = [
 		path: 'home',
 		component: HomeComponent,
 		pathMatch: 'full',
+	},
+	{
+		path: 'employees',
+		component: EmployeesComponent,
 	},
 	{
 		path: 'category',

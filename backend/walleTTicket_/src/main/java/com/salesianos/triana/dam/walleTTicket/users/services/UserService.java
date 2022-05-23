@@ -64,16 +64,14 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
             return save(userEntity);
     }
 
-    public UserEntity saveEmployee(CreateUserDto newUser, MultipartFile file){
-        String avatarUrl=s3Service.save(file);
+    public UserEntity saveEmployee(CreateUserDto newUser){
 
         UserEntity userEntity = UserEntity.builder()
                 .name(newUser.getName())
                 .lastName(newUser.getLastName())
                 .password(passwordEncoder.encode(newUser.getPassword()))
                 .email(newUser.getEmail())
-                .avatarUrl(avatarUrl)
-                .rol(Roles.USER)
+                .rol(Roles.EMPLOYEE)
                 .isEnabled(true)
                 .build();
 
@@ -99,6 +97,15 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
             repositorio.save(u);
         });
         return repositorio.findAll();
+    }
+
+    @PostConstruct
+    public List<UserEntity>findAllEmployee() {
+        repositorio.findAll().stream().forEach(u -> {
+            u.setPassword(passwordEncoder.encode(u.getPassword()));
+            repositorio.save(u);
+        });
+        return repositorio.findByRol(Roles.EMPLOYEE);
     }
 
     public GetUserDto findUserById(Long id) {
@@ -188,28 +195,22 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
         }
     }
 
-    public void enabledUser(Long id, UserEntity u) {
+    public void enabledUser(Long id) {
         Optional<UserEntity> user = repositorio.findById(id);
         if (user.isEmpty()) {
             throw new SingleEntityNotFoundException(id.toString(), UserEntity.class);
-        } else if (u.getRol() == Roles.ADMIN || u.getRol() == Roles.EMPLOYEE || u.getId() == id) {
+        }
             user.get().setEnabled(true);
             repositorio.save(user.get());
-        } else {
-            throw new NotAuthorizationException();
-        }
     }
 
-    public void disbledUser(Long id, UserEntity u) {
+    public void disbledUser(Long id) {
         Optional<UserEntity> user = repositorio.findById(id);
         if (user.isEmpty()) {
             throw new SingleEntityNotFoundException(id.toString(), UserEntity.class);
-        } else if (u.getRol() == Roles.ADMIN || u.getRol() == Roles.EMPLOYEE || u.getId() == id) {
-            user.get().setEnabled(false);
-            repositorio.save(user.get());
-        } else {
-            throw new NotAuthorizationException();
         }
+        user.get().setEnabled(false);
+        repositorio.save(user.get());
     }
 
     public void deleteUserById(Long id, UserEntity u) {
@@ -231,7 +232,6 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
         if (user.isEmpty()) {
             throw new SingleEntityNotFoundException(id.toString(), UserEntity.class);
         } else if (u.getRol() == Roles.ADMIN || u.getId() == id) {
-            s3Service.deleteImage(user.get().getAvatarUrl());
             user.get().setTicketsList(null);
 
             repositorio.deleteById(id);
