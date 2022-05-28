@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
     this.authService.login(this.loginDto).subscribe(loginResult => {
+      
       if (loginResult.role == "USER") {
         Swal.fire({
           icon: 'error',
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['home']);
         this.authService.setLocalRequestToken(loginResult.token);
         this.authService.setRole(loginResult.role);
+        this.authService.setUserName(`${loginResult.name}  ${loginResult.lastName}`)
       }
     }, error => {
       console.log(error)

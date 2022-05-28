@@ -7,13 +7,13 @@ import { OkApiResponseList } from '../util/apiResponseInterface';
 
 
 const AUTH_BASE_URL = 'category';
-var token = localStorage.getItem('request_token');
+let token = localStorage.getItem('request_token');
 const DEFAULT_HEADERS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
   })
 };
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,11 @@ export class CategoryService {
   }
 
   createCategory(category: CategoryResponse): Observable<any> {
+    const formData = new FormData();
+    formData.append('json', JSON.stringify(category));
+
     let requestUrl = `${this.categoryBaseUrl}/`;
-    return this.http.post<OkApiResponseList<CategoryResponse>>(requestUrl, category, DEFAULT_HEADERS);
+    return this.http.post<OkApiResponseList<CategoryResponse>>(requestUrl, formData , DEFAULT_HEADERS);
   }
 
   editCategory(idCategory: number, category: CategoryResponse): Observable<any> {

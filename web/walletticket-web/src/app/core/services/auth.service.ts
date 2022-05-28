@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthLoginDto } from '../entity/login/authLogin.dto';
 import { AuthLoginResponse } from '../entity/login/AuthLoginResponse';
+import { OkApiResponseList } from '../util/apiResponseInterface';
 
 
 const AUTH_BASE_URL = 'auth';
@@ -26,6 +27,14 @@ export class AuthService {
     return this.http.post<AuthLoginResponse>(requestUrl, loginDto, DEFAULT_HEADERS);
   }
 
+  getAllUsers(): Observable<any> {
+    let requestUrl = `${this.authBaseUrl}/all/`;
+    return this.http.get<OkApiResponseList<AuthLoginResponse>>(requestUrl, DEFAULT_HEADERS);
+  }
+
+
+  // LocalStorage Saved
+
   setLocalRequestToken(token: string) {
     localStorage.setItem('request_token', token);
   }
@@ -41,6 +50,14 @@ export class AuthService {
 
   getRole() {
     return localStorage.getItem('role');
+  }
+
+  setUserName(name: string) {
+    localStorage.setItem('userName', name);
+  }
+
+  getUserName() {
+    return localStorage.getItem('userName');
   }
 
 }

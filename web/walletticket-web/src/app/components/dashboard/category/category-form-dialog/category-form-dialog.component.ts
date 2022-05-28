@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CategoryResponse } from 'src/app/core/entity/category/categoryListResponse';
 import { CommunicationList } from 'src/app/core/util/iconsList/communicationList';
 
@@ -16,10 +16,10 @@ export class CategoryFormDialogComponent implements OnInit {
   iconListCommunication = CommunicationList;
 
   constructor(private dialogRefe: MatDialogRef<CategoryFormDialogComponent>,
-    private dialog: MatDialog, private fb: FormBuilder) { }
+    private dialog: MatDialog, private fb: FormBuilder,  @Inject(MAT_DIALOG_DATA) public data: { category: CategoryResponse,}) { }
 
   ngOnInit(): void {
-    
+    this.category = this.data.category
   }
 
   saveCategory() {

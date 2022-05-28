@@ -1,4 +1,174 @@
 <app-toolbar></app-toolbar>
-<p>
-  home works!
-</p>
+
+<mat-card>
+  <mat-card-content class="Pml-1 Pmr-1">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <h2 class="Pmr-1 title">Hola {{this.userNameLogued}}, Bienvenido a la Administración de WalleTTicket</h2>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button mat-fab mat-card-icon class="shadow-none bg-inverse  bg-success">
+              <mat-icon>local_mall</mat-icon>
+            </button>
+          </div>
+          <div>
+            <h1 class="m-0">{{ticketTotalItems}}</h1>
+            <h1 class="text-muted m-0">Numero de Ticket Creados</h1>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button mat-fab color="warn" mat-card-icon class="shadow-none  bg-warning">
+              <mat-icon>architecture</mat-icon>
+            </button>
+          </div>
+          <div>
+            <h1 class="m-0">{{categoryTotalItems}}</h1>
+            <h1 class="text-muted m-0">Numero de Categorías Creadas</h1>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button mat-fab color="accent" mat-card-icon class="shadow-none">
+              <mat-icon>business</mat-icon>
+            </button>
+          </div>
+          <div>
+            <h1 class="m-0">{{companyTotalItems}}</h1>
+            <h1 class="text-muted m-0">Numero de Compañías Actuales</h1>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+          </div>
+          <div>
+            <h1 class="m-0">{{userTotals}}</h1>
+            <h1 class="text-muted m-0">Usuarios Totales</h1>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<div fxLayout="row">
+  <div fxLayout="column" fxFlex="75">
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="7" class="m-r-10 no-shrink">
+            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
+              <mat-icon>content_paste</mat-icon>
+            </button>
+          </div>
+          <div fxFlex="50">
+            <h1 class="text-muted m-0">Pincha para Acceder a la pestaña de categorías</h1>
+          </div>
+
+          <div fxFlex="43">
+            <h2 class="text-muted m-0">En esta sección podrás crear, eliminar y editar una categoría</h2>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="7" class="m-r-10 no-shrink">
+            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
+              <mat-icon>content_paste</mat-icon>
+            </button>
+          </div>
+          <div fxFlex="50">
+            <h1 class="text-muted m-0">Pincha para Acceder a la pestaña de Compañías</h1>
+          </div>
+
+          <div fxFlex="43">
+            <h2 class="text-muted m-0">En esta sección podrás crear, eliminar y editar una compañías</h2>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="m-r-10 no-shrink" fxFlex="7">
+            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
+              <mat-icon>content_paste</mat-icon>
+            </button>
+          </div>
+          <div fxFlex="50">
+            <h1 class="text-muted m-0">Pincha para Acceder a la pestaña de Empleados</h1>
+          </div>
+
+          <div fxFlex="43">
+            <h2 class="text-muted m-0">En esta sección podrás gestionar a los empleados</h2>
+
+            <h3 class="text-muted m-0">Función solo habilitada para administradores</h3>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-content>
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="m-r-10 no-shrink" fxFlex="7">
+            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
+              <mat-icon>content_paste</mat-icon>
+            </button>
+          </div>
+          <div fxFlex="50">
+            <h1 class="text-muted m-0">Pincha para Acceder a la pestaña de Administradores</h1>
+          </div>
+
+          <div fxFlex="43">
+            <h2 class="text-muted m-0">En esta sección podrás gestionar a los administradores</h2>
+
+            <h3 class="text-muted m-0">Función solo habilitada para administradores</h3>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+</div>

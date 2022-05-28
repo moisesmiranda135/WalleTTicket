@@ -1,3 +1,4 @@
+import { CompanyComponent } from './components/dashboard/company/company.component';
 import { EmployeesComponent } from './components/dashboard/employees/employees.component';
 import { HomeComponent } from './components/dashboard/home/home.component';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,10 @@ const routes: Routes = [
 	{
 		path: 'category',
 		component: CategoryComponent,
+	},
+	{
+		path: 'company',
+		component: CompanyComponent,
 	},
 	{ path: '', pathMatch: 'full', redirectTo: '/login'}
 ];

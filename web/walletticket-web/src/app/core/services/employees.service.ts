@@ -7,11 +7,10 @@ import { environment } from 'src/environments/environment';
 import { OkApiResponseList } from '../util/apiResponseInterface';
 
 
-var token = localStorage.getItem('request_token');
+let token = localStorage.getItem('request_token');
 const DEFAULT_HEADERS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
   })
 };
 

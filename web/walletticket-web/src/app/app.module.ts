@@ -1,3 +1,4 @@
+import { CompanyComponent } from './components/dashboard/company/company.component';
 import { CreateEmployeeDialogComponent } from './components/dashboard/employees/create-employee-dialog/create-employee-dialog.component';
 import { EmployeesComponent } from './components/dashboard/employees/employees.component';
 import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
@@ -11,11 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CoreModule } from '@angular/flex-layout';
 import { CategoryComponent } from './components/dashboard/category/category.component';
 import { CategoryFormDialogComponent } from './components/dashboard/category/category-form-dialog/category-form-dialog.component';
+import { TokenInterceptor } from './core/interceptor/token.interceptor';
+import { CompanyItemComponent } from './components/dashboard/company/company-item/company-item.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { CategoryFormDialogComponent } from './components/dashboard/category/cat
     CategoryComponent,
     CategoryFormDialogComponent,
     EmployeesComponent,
-    CreateEmployeeDialogComponent
+    CreateEmployeeDialogComponent,
+    CompanyComponent,
+    CompanyItemComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,7 @@ import { CategoryFormDialogComponent } from './components/dashboard/category/cat
     MatNativeDateModule,
     CoreModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

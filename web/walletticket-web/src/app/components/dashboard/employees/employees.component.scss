@@ -1,62 +1,29 @@
-.demo-table {
+.table-responsive {
+	margin: auto;
+	width: 99%;
+	height: 75vh;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+table {
     width: 100%;
 }
 
-.mat-column-id {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 25% !important;
-    width: 25% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+
+.header-align-right {
+    text-align: right;
+    justify-content: flex-end;
 }
 
-.mat-column-name {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 30% !important;
-    width: 30% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+.not-found-text{
+    color: gray;
+    font-size: 40px;
 }
 
-
-.mat-column-alias {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 30% !important;
-    width: 30% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
-
-.mat-column-accions {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 15% !important;
-    width: 15% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+.not-found-icon {
+    font-size: 70px;
+    color: gray;
 }
 
 
