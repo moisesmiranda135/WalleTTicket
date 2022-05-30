@@ -36,9 +36,9 @@ export class HomeComponent implements OnInit {
     this.categoryService.getList().subscribe((result) => {
       this.categoryTotalItems = result.length
     })
-    //Get Number of Companyes
+    //Get Number of Companys
     this.companyService.getList().subscribe((result) => {
-      this.categoryTotalItems = result.length
+      this.companyTotalItems = result.length
     })
     //Get Number of Tickets
     this.ticketService.getList().subscribe((result) => {
