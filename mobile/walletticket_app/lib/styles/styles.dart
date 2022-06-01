@@ -26,6 +26,9 @@ class WalleTTicketStyle {
   static const double containerIconBBSize = 45;
   static const double iconBBSize = 35;
 
+  //Create Ticket Form
+  static const double formCreateFieldWidth = 320;
+
 /*
   // Margins, Paddings, Card properties
   static const double bodyPadding = 20.0;

@@ -17,7 +17,6 @@ public class CreateUserDto {
     @NotBlank(message = "{UserEntity.name.notblank}")
     @UniqueUser(message = "{UserEntity.name.uniqueName}")
     private String email;
-    private String avatarUrl;
     private String password;
     private String role;
     private boolean isEnabled;

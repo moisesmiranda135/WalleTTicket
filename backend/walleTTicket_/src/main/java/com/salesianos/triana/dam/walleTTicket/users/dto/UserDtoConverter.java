@@ -13,7 +13,6 @@ public class UserDtoConverter {
                 .name(u.getName())
                 .lastName(u.getLastName())
                 .email(u.getEmail())
-                .avatarUrl(u.getAvatarUrl())
                 .role(u.getRol().name())
                 .isEnabled(u.isEnabled())
                 .build();
@@ -25,7 +24,6 @@ public class UserDtoConverter {
                 .lastName(u.getLastName())
                 .email(u.getEmail())
                 .password(u.getPassword())
-                .avatarUrl(u.getAvatarUrl())
                 .role(u.getRol().name())
                 .isEnabled(u.isEnabled())
                 .build();

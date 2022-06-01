@@ -13,6 +13,8 @@ import 'package:walletticket_app/styles/styles.dart';
 import 'package:walletticket_app/ui/widgets/error_page.dart';
 import 'package:walletticket_app/ui/widgets/shimmer_vertical_list.dart';
 
+import 'create_ticket_screen.dart';
+
 void main() {
   runApp(const HomeScreen());
 }
@@ -76,20 +78,52 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
           body: SingleChildScrollView(
             child: Container(
-              color: Colors.grey[300],
+              color: Colors.grey[200],
               child: Center(
                 child: Column(
                   children: [
                     Column(
                       children: [
                         Container(
-                            child: Text(
-                          "Todos los Tickets",
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black38),
-                        )),
+                          margin: const EdgeInsets.only(top: 20, left: 30),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Todos los Tickets",
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.black),
+                              ),
+                              Container(
+                                width: 80,
+                              ),
+                              Column(
+                                children: [
+                                  IconButton(
+                                    icon: Icon(Icons.post_add_outlined),
+                                    iconSize: 50,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CreateTicketScreen()),
+                                      );
+                                    },
+                                  ),
+                                  Text(
+                                    "Nuevo Ticket",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         RefreshIndicator(
                             onRefresh: () async {
                               _ticketBloc.add(const FetchTicketByUser());
@@ -238,7 +272,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 ),
                                 //Text(ticket.categoryName, softWrap: true),
-                                Text("proban..."),
+                                Text(ticket.categoryName, softWrap: true),
                               ],
                             )),
                       ],

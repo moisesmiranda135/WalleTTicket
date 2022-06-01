@@ -21,8 +21,8 @@ public class UserController {
     private final UserDtoConverter userDtoConverter;
 
     @PostMapping("/auth/register/user")
-    public ResponseEntity<GetUserDto> newUser(@RequestPart("json") CreateUserDto newUser, @RequestPart("file") MultipartFile file) {
-        UserEntity saved = userService.saveUser(newUser,file);
+    public ResponseEntity<GetUserDto> newUser(@RequestPart("json") CreateUserDto newUser) {
+        UserEntity saved = userService.saveUser(newUser);
 
         if (saved == null)
             return ResponseEntity.badRequest().build();
@@ -57,29 +57,26 @@ public class UserController {
 
     @PutMapping("/user/{id}")
     public ResponseEntity<CreateUserDto> editUser(@Valid @RequestPart("json") CreateUserDto dto,
-                                                @RequestPart("file") MultipartFile file,
                                                 @AuthenticationPrincipal UserEntity u,
                                                 @PathVariable Long id) {
 
-        return ResponseEntity.ok().body(userService.editRolUser(dto,file, id, u));
+        return ResponseEntity.ok().body(userService.editRolUser(dto, id, u));
     }
 
     @PutMapping("/employee/{id}")
     public ResponseEntity<CreateUserDto> editEmployee(@Valid @RequestPart("json") CreateUserDto dto,
-                                                  @RequestPart("file") MultipartFile file,
                                                   @AuthenticationPrincipal UserEntity u,
                                                   @PathVariable Long id) {
 
-        return ResponseEntity.ok().body(userService.editRolEmployee(dto,file, id, u));
+        return ResponseEntity.ok().body(userService.editRolEmployee(dto, id, u));
     }
 
     @PutMapping("/admin/{id}")
     public ResponseEntity<CreateUserDto> editAdmin(@Valid @RequestPart("json") CreateUserDto dto,
-                                                      @RequestPart("file") MultipartFile file,
                                                       @AuthenticationPrincipal UserEntity u,
                                                       @PathVariable Long id) {
 
-        return ResponseEntity.ok().body(userService.editRolAdmin(dto,file, id, u));
+        return ResponseEntity.ok().body(userService.editRolAdmin(dto, id, u));
     }
 
 
