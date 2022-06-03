@@ -27,7 +27,6 @@ public class UserEntity implements UserDetails {
     private String lastName;
     private String email;
     private String password;
-    private String avatarUrl;
     private boolean isEnabled;
 
     @Enumerated(EnumType.STRING)

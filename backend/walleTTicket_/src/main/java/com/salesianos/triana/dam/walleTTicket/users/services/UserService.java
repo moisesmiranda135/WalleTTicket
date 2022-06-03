@@ -48,15 +48,13 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
     }
 
 
-    public UserEntity saveUser(CreateUserDto newUser, MultipartFile file){
-        String avatarUrl=s3Service.save(file);
+    public UserEntity saveUser(CreateUserDto newUser){
 
             UserEntity userEntity = UserEntity.builder()
                     .name(newUser.getName())
                     .lastName(newUser.getLastName())
                     .password(passwordEncoder.encode(newUser.getPassword()))
                     .email(newUser.getEmail())
-                    .avatarUrl(avatarUrl)
                     .rol(Roles.USER)
                     .isEnabled(true)
                     .build();
@@ -72,6 +70,7 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
                 .password(passwordEncoder.encode(newUser.getPassword()))
                 .email(newUser.getEmail())
                 .rol(Roles.EMPLOYEE)
+                .rol(Roles.USER)
                 .isEnabled(true)
                 .build();
 
@@ -123,13 +122,11 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
         }
     }
 
-    public CreateUserDto editRolUser(CreateUserDto dto, MultipartFile file, Long id, UserEntity us) {
+    public CreateUserDto editRolUser(CreateUserDto dto, Long id, UserEntity us) {
         Optional<UserEntity> user = repositorio.findById(id);
         if (user.isEmpty()) {
             throw new SingleEntityNotFoundException(id.toString(), UserEntity.class);
         } else if (us.getRol() == Roles.EMPLOYEE || us.getRol() == Roles.ADMIN || us.getId() == id) {
-            s3Service.deleteImage(user.get().getAvatarUrl());
-            String avatarUrl=s3Service.save(file);
 
             return repositorio.findById(id).map(u -> {
                 u.setId(id);
@@ -137,7 +134,6 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
                 u.setLastName(dto.getLastName());
                 u.setPassword(dto.getPassword());
                 u.setEmail(dto.getEmail());
-                u.setAvatarUrl(avatarUrl);
                 u.setEnabled(true);
                 repositorio.save(u);
                 return converter.convertUserToCreateUserDto(u);
@@ -147,13 +143,11 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
         }
     }
 
-    public CreateUserDto editRolEmployee(CreateUserDto dto, MultipartFile file, Long id, UserEntity us) {
+    public CreateUserDto editRolEmployee(CreateUserDto dto, Long id, UserEntity us) {
         Optional<UserEntity> user = repositorio.findById(id);
         if (user.isEmpty()) {
             throw new SingleEntityNotFoundException(id.toString(), UserEntity.class);
         } else if (us.getRol() == Roles.ADMIN || us.getId() == id) {
-            s3Service.deleteImage(user.get().getAvatarUrl());
-            String avatarUrl=s3Service.save(file);
 
             return repositorio.findById(id).map(u -> {
                 u.setId(id);
@@ -161,7 +155,6 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
                 u.setLastName(dto.getLastName());
                 u.setPassword(dto.getPassword());
                 u.setEmail(dto.getEmail());
-                u.setAvatarUrl(avatarUrl);
                 u.setEnabled(true);
                 repositorio.save(u);
                 return converter.convertUserToCreateUserDto(u);
@@ -171,13 +164,11 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
         }
     }
 
-    public CreateUserDto editRolAdmin(CreateUserDto dto, MultipartFile file, Long id, UserEntity us) {
+    public CreateUserDto editRolAdmin(CreateUserDto dto, Long id, UserEntity us) {
         Optional<UserEntity> user = repositorio.findById(id);
         if (user.isEmpty()) {
             throw new SingleEntityNotFoundException(id.toString(), UserEntity.class);
         } else if (us.getRol() == Roles.ADMIN || us.getId() == id) {
-            s3Service.deleteImage(user.get().getAvatarUrl());
-            String avatarUrl=s3Service.save(file);
 
             return repositorio.findById(id).map(u -> {
                 u.setId(id);
@@ -185,7 +176,6 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
                 u.setLastName(dto.getLastName());
                 u.setPassword(dto.getPassword());
                 u.setEmail(dto.getEmail());
-                u.setAvatarUrl(avatarUrl);
                 u.setEnabled(true);
                 repositorio.save(u);
                 return converter.convertUserToCreateUserDto(u);
@@ -218,7 +208,6 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
         if (user.isEmpty()) {
             throw new SingleEntityNotFoundException(id.toString(), UserEntity.class);
         } else if (u.getRol() == Roles.ADMIN || u.getRol() == Roles.EMPLOYEE || u.getId() == id) {
-            s3Service.deleteImage(user.get().getAvatarUrl());
             user.get().setTicketsList(null);
 
             repositorio.deleteById(id);
