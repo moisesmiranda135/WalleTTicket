@@ -19,7 +19,9 @@ export class CategoryFormDialogComponent implements OnInit {
     private dialog: MatDialog, private fb: FormBuilder,  @Inject(MAT_DIALOG_DATA) public data: { category: CategoryResponse,}) { }
 
   ngOnInit(): void {
-    this.category = this.data.category
+    if (this.data) {
+      this.category = this.data.category
+    }
   }
 
   saveCategory() {

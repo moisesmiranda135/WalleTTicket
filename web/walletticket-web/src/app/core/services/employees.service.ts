@@ -32,6 +32,11 @@ export class EmployeesService {
     return this.http.post<OkApiResponseList<UserResponse>>(requestUrl, employee, DEFAULT_HEADERS);
   }
 
+  editEmployee(employee: UserDto, idEmployee: number): Observable<any> {
+    let requestUrl = `${this.employeeBaseUrl}/employee/${idEmployee}`;
+    return this.http.put<OkApiResponseList<UserResponse>>(requestUrl, employee, DEFAULT_HEADERS);
+  }
+
   deleteEmployee(idEmployee: number): Observable<any> {
     let requestUrl = `${this.employeeBaseUrl}/employee/${idEmployee}`;
     return this.http.delete<OkApiResponseList<UserResponse>>(requestUrl, DEFAULT_HEADERS);

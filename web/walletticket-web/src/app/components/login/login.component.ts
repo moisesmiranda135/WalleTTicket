@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
     this.authService.login(this.loginDto).subscribe(loginResult => {
-      
-      if (loginResult.role == "USER") {
+      if (loginResult.role === "USER") {
         Swal.fire({
           icon: 'error',
           title: 'Error de Autentificación',

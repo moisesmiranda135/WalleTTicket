@@ -60,6 +60,11 @@ public class UserController {
         return ResponseEntity.ok(userService.findAllEmployee());
     }
 
+    @GetMapping("/auth/all/admin")
+    public ResponseEntity<?> listAllAdmin() {
+        return ResponseEntity.ok(userService.findAllAdmin());
+    }
+
     @PutMapping("/user/{id}")
     public ResponseEntity<CreateUserDto> editUser(@Valid @RequestPart("json") CreateUserDto dto,
                                                 @AuthenticationPrincipal UserEntity u,

@@ -70,7 +70,6 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
                 .password(passwordEncoder.encode(newUser.getPassword()))
                 .email(newUser.getEmail())
                 .rol(Roles.EMPLOYEE)
-                .rol(Roles.USER)
                 .isEnabled(true)
                 .build();
 
@@ -89,22 +88,17 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
             return save(userEntity);
     }
 
-    @PostConstruct
+
     public List<UserEntity>findAll() {
-        repositorio.findAll().stream().forEach(u -> {
-            u.setPassword(passwordEncoder.encode(u.getPassword()));
-            repositorio.save(u);
-        });
         return repositorio.findAll();
     }
 
-    @PostConstruct
     public List<UserEntity>findAllEmployee() {
-        repositorio.findAll().stream().forEach(u -> {
-            u.setPassword(passwordEncoder.encode(u.getPassword()));
-            repositorio.save(u);
-        });
         return repositorio.findByRol(Roles.EMPLOYEE);
+    }
+
+    public List<UserEntity>findAllAdmin() {
+        return repositorio.findByRol(Roles.ADMIN);
     }
 
     public GetUserDto findUserById(Long id) {

@@ -19,6 +19,8 @@ import { CategoryComponent } from './components/dashboard/category/category.comp
 import { CategoryFormDialogComponent } from './components/dashboard/category/category-form-dialog/category-form-dialog.component';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { CompanyItemComponent } from './components/dashboard/company/company-item/company-item.component';
+import { AdminComponent } from './components/dashboard/admin/admin.component';
+import { CreateCompanyComponent } from './components/dashboard/company/create-company/create-company.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { CompanyItemComponent } from './components/dashboard/company/company-ite
     EmployeesComponent,
     CreateEmployeeDialogComponent,
     CompanyComponent,
-    CompanyItemComponent
+    CompanyItemComponent,
+    AdminComponent,
+    CreateCompanyComponent
   ],
   imports: [
     BrowserModule,

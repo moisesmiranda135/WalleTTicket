@@ -10,6 +10,8 @@ import com.salesianos.triana.dam.walleTTicket.model.Ticket;
 import com.salesianos.triana.dam.walleTTicket.repos.CategoryRepository;
 import com.salesianos.triana.dam.walleTTicket.repos.TicketRepository;
 import com.salesianos.triana.dam.walleTTicket.services.CategoryService;
+import com.salesianos.triana.dam.walleTTicket.users.models.Roles;
+import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +30,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CreateCategoryDto save(CreateCategoryDto createCategoryDto){
 
-        Category c = repository.save(Category.builder()
+        Category c = Category.builder()
                 .id(createCategoryDto.getId())
                 .title(createCategoryDto.getTitle())
                 .icon(createCategoryDto.getIcon())
-                .build());
+                .build();
+        repository.save(c);
 
         return converter.convertCategoryToCreateCategoryDto(Category.builder()
                 .id(c.getId())

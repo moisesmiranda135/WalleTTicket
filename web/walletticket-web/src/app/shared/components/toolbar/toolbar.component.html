@@ -10,7 +10,7 @@
 
     </a>
 
-    <div fxLayout="row" fxFlex="45" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxFlex="45" fxLayoutAlign="start center">
 
       <button fxFlex="25" mat-button class="toolbar-icon w40" routerLink="/category" matTooltip="Ir a la gestión de Categorías">
         <mat-icon class="Pmr-2">architecture</mat-icon> Categorias
@@ -24,15 +24,15 @@
         <mat-icon class="Pmr-2">group</mat-icon> Empleados
       </button>
 
-      <button fxFlex="25" mat-button class="toolbar-icon w40" *ngIf="userRole === 'ADMIN'" matTooltip="Ir a la gestión de Administraodres">
+      <button fxFlex="25" mat-button class="toolbar-icon w40" routerLink="/admin" *ngIf="userRole === 'ADMIN'" matTooltip="Ir a la gestión de Administraodres">
         <mat-icon class="Pmr-2">groups</mat-icon> Administradores
       </button>
 
     </div>
 
-    <div fxLayout="row" fxFlex="10" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxFlex="20" fxLayoutAlign="space-between center">
       <div style="margin-left: 20px;">
-        <h2 class="enlace">Hola {{userNameLogued}}</h2>
+        <h2 class="enlace">Usuario: {{userNameLogued}}</h2>
       </div>
     </div>
 

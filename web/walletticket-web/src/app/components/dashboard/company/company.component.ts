@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CompanyResponse } from 'src/app/core/entity/company/companyResponse';
 import { CompanyService } from 'src/app/core/services/company.service';
 import Swal from 'sweetalert2';
+import { CreateCompanyComponent } from './create-company/create-company.component';
 
 @Component({
   selector: 'app-company',
@@ -79,27 +80,27 @@ export class CompanyComponent implements OnInit {
     })
   }
 
-  // cretaeCompany() {
-  //   const dialogRef = this.dialog.open(CompanyFormDialogComponent, {
-  //     width: '80vw',
-  //     autoFocus: false,
-  //     disableClose: true,
-  //   });
+  createCompany() {
+    const dialogRef = this.dialog.open(CreateCompanyComponent, {
+      width: '80vw',
+      autoFocus: false,
+      disableClose: true,
+    });
 
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result?.event === 'ok') {
-  //       this.companyService.createCompany(result.Company).subscribe((c) => {
-  //           Swal.fire({
-  //             text: 'Categoría creada con Éxito',
-  //             icon: 'success',
-  //             showConfirmButton: false,
-  //             timer: 2000,
-  //           });
-  //           window.location.assign(`Company`);
-  //         });
-  //     }
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result?.event === 'ok') {
+        this.companyService.createCompany(result.company, result.image).subscribe((c) => {
+            Swal.fire({
+              text: 'Categoría creada con Éxito',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            window.location.assign(`Company`);
+          });
+      }
+    });
+  }
 
   // editCompany(row: CompanyResponse) {
   //   const dialogRef = this.dialog.open(CompanyFormDialogComponent, {

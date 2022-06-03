@@ -18,7 +18,7 @@ public class CategoryController {
     private final CategoryServiceImpl categoryService;
 
     @PostMapping("/")
-    public ResponseEntity<?> create(@Valid @RequestPart("json") CreateCategoryDto dto) {
+    public ResponseEntity<?> create(@RequestBody CreateCategoryDto dto) {
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(categoryService.save(dto));
@@ -35,7 +35,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CreateCategoryDto> edit(@Valid @RequestPart("json") CreateCategoryDto dto, @PathVariable Long id) {
+    public ResponseEntity<CreateCategoryDto> edit(@RequestBody CreateCategoryDto dto, @PathVariable Long id) {
         return ResponseEntity.ok().body(categoryService.edit(dto, id));
     }
 

@@ -14,6 +14,11 @@ const DEFAULT_HEADERS = {
   })
 };
 
+const FILE_HEADERS = {
+  headers: new HttpHeaders({
+  })
+};
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +34,13 @@ export class CompanyService {
     return this.http.get<OkApiResponseList<CompanyResponse>>(requestUrl, DEFAULT_HEADERS);
   }
 
-  createCompany(company: CompanyResponse): Observable<any> {
+  createCompany(company: CompanyResponse, image: File): Observable<any> {
     const formData = new FormData();
-    formData.append('json', JSON.stringify(company));
+    formData.append('json', new Blob ([JSON.stringify(company)], {type: 'application/json'}));
+    formData.append('file', image);
 
     let requestUrl = `${this.CompanyBaseUrl}/`;
-    return this.http.post<OkApiResponseList<CompanyResponse>>(requestUrl, formData , DEFAULT_HEADERS);
+    return this.http.post<OkApiResponseList<CompanyResponse>>(requestUrl, formData , FILE_HEADERS);
   }
 
   editCompany(idCompany: number, company: CompanyResponse): Observable<any> {

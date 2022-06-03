@@ -29,12 +29,9 @@ export class CategoryService {
     return this.http.get<OkApiResponseList<CategoryResponse>>(requestUrl, DEFAULT_HEADERS);
   }
 
-  createCategory(category: CategoryResponse): Observable<any> {
-    const formData = new FormData();
-    formData.append('json', JSON.stringify(category));
-
+  createCategory(category: CategoryResponse) {
     let requestUrl = `${this.categoryBaseUrl}/`;
-    return this.http.post<OkApiResponseList<CategoryResponse>>(requestUrl, formData , DEFAULT_HEADERS);
+    return this.http.post<OkApiResponseList<CategoryResponse>>(requestUrl, category , DEFAULT_HEADERS);
   }
 
   editCategory(idCategory: number, category: CategoryResponse): Observable<any> {
