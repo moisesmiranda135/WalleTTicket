@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { OkApiResponseList } from '../util/apiResponseInterface';
+import { OkApiResponse, OkApiResponseList } from '../util/apiResponseInterface';
 
 
 let token = localStorage.getItem('request_token');

@@ -6,8 +6,8 @@
   <mat-card-content>
   </mat-card-content>
   <mat-card-actions style="width: 100%;" fxLayoutAlign="end center">
-    <button fxFlex="30" mat-icon-button matTooltip="Eliminar Compañía" class="actionWarn-c">       <mat-icon>delete</mat-icon> Eliminar </button>
-
-    <button fxFlex="30" mat-icon-button matTooltip="Editar Compañía" class="actionAccent-c">       <mat-icon>edit</mat-icon> Editar</button>
+    <button fxFlex="30" mat-icon-button matTooltip="Eliminar Compañía" class="actionWarn-c" (click)="deleteCompany(companyInput.id)">
+      <mat-icon>delete</mat-icon> Eliminar
+    </button>
   </mat-card-actions>
 </mat-card>

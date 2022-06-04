@@ -20,7 +20,7 @@ export class CategoryComponent implements OnInit {
   formData = new FormData();
 
   dataSource = new MatTableDataSource<CategoryResponse>();
-  displayedColumns: string[] = ['id','title','icon', 'iconImage', 'actions'];
+  displayedColumns: string[] = ['id', 'title', 'icon', 'iconImage', 'actions'];
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,7 +37,7 @@ export class CategoryComponent implements OnInit {
   }
 
   generateList() {
-    this.categoryService.getList().subscribe( (result) => {
+    this.categoryService.getList().subscribe((result) => {
       this.dataSource.data = result;
     })
   }
@@ -100,14 +100,15 @@ export class CategoryComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result?.event === 'ok') {
         this.categoryService.createCategory(result.category).subscribe((c) => {
-            Swal.fire({
-              text: 'Categoría creada con Éxito',
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 2000,
-            });
+          Swal.fire({
+            text: 'Categoría creada con Éxito',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000,
+          }).then( () => {
             window.location.assign(`category`);
           });
+        });
       }
     });
   }
@@ -125,15 +126,16 @@ export class CategoryComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result?.event === 'ok') {
         this.categoryService.createCategory(result.category).subscribe((c) => {
-            Swal.fire({
-              text: 'Categoría creada con Éxito',
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 2000,
-            });
+          Swal.fire({
+            text: 'Categoría editada con Éxito',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000,
+          }).then( () => {
+            window.location.assign(`category`);
           });
+        });
       }
-      window.location.assign(`category`);
     });
   }
 }

@@ -8,5 +8,10 @@ export enum CommunicationList {
     list_alt,
     vpn_key,
     alternate_email,
-
+    subscriptions,
+    carpenter,
+    chair,
+    electric_bolt,
+    heat_pump,
+    mic_none,
 }

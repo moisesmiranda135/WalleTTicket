@@ -32,20 +32,21 @@
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="width: 100%;">
                     <mat-tab-group mat-align-tabs="start">
                         <mat-tab label="Comunicación">
-                            <mat-icon class="Pmr-2" (click)="changeIconValue('account_circle')" >account_circle</mat-icon>
+                            <button mat-raised-button class="actionPrimary-b" *ngFor="let item of generateIconsCommunication()" (click)="changeIconValue(item)">
+                                <mat-icon class="Pmr-2" >{{ item }}</mat-icon>
+                              </button>
                         </mat-tab>
-                        <mat-tab label="Ficheros">
-                            <!-- <div *ngFor="let item of generateIcons()">
-                            {{ item }}
-                          </div>   -->
-                          <button mat-raised-button class="actionPrimary-b" *ngFor="let item of generateIcons()" (click)="changeIconValue(item)">
-                            <mat-icon class="Pmr-2" >{{ item }}</mat-icon>
-                          </button>
-
-                          
+                        <mat-tab label="Teconología">
+                            <button mat-raised-button class="actionPrimary-b" *ngFor="let item of generateIconsTecnology()" (click)="changeIconValue(item)">
+                                <mat-icon class="Pmr-2" >{{ item }}</mat-icon>
+                              </button>
                         </mat-tab>
                         
-                        <mat-tab label="Editor">Content 3</mat-tab>
+                        <mat-tab label="Comercio">
+                            <button mat-raised-button class="actionPrimary-b" *ngFor="let item of generateIconsShop()" (click)="changeIconValue(item)">
+                                <mat-icon class="Pmr-2" >{{ item }}</mat-icon>
+                              </button>
+                        </mat-tab>
                       </mat-tab-group>
                 </div>
         </mat-card-content>

@@ -3,6 +3,7 @@ import { CategoryService } from 'src/app/core/services/category.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyService } from 'src/app/core/services/company.service';
 import { TicketService } from 'src/app/core/services/ticket.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -48,6 +49,26 @@ export class HomeComponent implements OnInit {
     this.authService.getAllUsers().subscribe((result) => {
       this.userTotals = result.length
     })
+  }
+
+  navigate(page: string){
+    if (page === "/employees" && this.authService.getRole() === "EMPLOYEE") {
+      Swal.fire({
+        text: 'Esta función solo esta habilitada para administradores',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2000,
+      })
+    } else if (page === "/admin" && this.authService.getRole() === "EMPLOYEE") {
+      Swal.fire({
+        text: 'Esta función solo esta habilitada para administradores',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2000,
+      })
+    } else {
+      window.location.assign(`${page}`);
+    }
   }
 
 }

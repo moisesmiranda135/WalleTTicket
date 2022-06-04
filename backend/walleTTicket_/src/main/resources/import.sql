@@ -1,0 +1,1 @@
+INSERT INTO user_entity (id, email, is_enabled, last_name, name, password, rol) VALUES (1, 'user.test@walletticket.com', true, 'test', 'user', '$2a$12$5chrOhCkkH/qRRf/Bg7dpORXqm.TtwkTinlEqr.A6UXvc.bHS7RcK', 'ADMIN');

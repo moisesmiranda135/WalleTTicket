@@ -21,6 +21,7 @@ import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { CompanyItemComponent } from './components/dashboard/company/company-item/company-item.component';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { CreateCompanyComponent } from './components/dashboard/company/create-company/create-company.component';
+import { CreateAdminDialogComponent } from './components/dashboard/admin/create-admin-dialog/create-admin-dialog.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CreateCompanyComponent } from './components/dashboard/company/create-co
     CompanyComponent,
     CompanyItemComponent,
     AdminComponent,
-    CreateCompanyComponent
+    CreateCompanyComponent,
+    CreateAdminDialogComponent
   ],
   imports: [
     BrowserModule,

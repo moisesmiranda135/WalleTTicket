@@ -87,14 +87,14 @@
   <div fxLayout="column" fxFlex="75">
     <mat-card>
       <mat-card-content>
-        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center" (click)="navigate('/category')">
           <div fxFlex="7" class="m-r-10 no-shrink">
-            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
-              <mat-icon>content_paste</mat-icon>
+            <button mat-fab color="warn" mat-card-icon class="shadow-none actionPrimary-b">
+              <mat-icon>architecture</mat-icon>
             </button>
           </div>
           <div fxFlex="50">
-            <h1 class="text-muted m-0">Pincha para Acceder a la pestaña de categorías</h1>
+            <h1 class="text-muted m-0">Pincha para Acceder a la pestaña de Categorías</h1>
           </div>
 
           <div fxFlex="43">
@@ -107,10 +107,10 @@
 
     <mat-card>
       <mat-card-content>
-        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center" (click)="navigate('/company')">
           <div fxFlex="7" class="m-r-10 no-shrink">
-            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
-              <mat-icon>content_paste</mat-icon>
+            <button mat-fab color="warn" mat-card-icon class="shadow-none actionPrimary-b">
+              <mat-icon>business</mat-icon>
             </button>
           </div>
           <div fxFlex="50">
@@ -127,10 +127,10 @@
 
     <mat-card>
       <mat-card-content>
-        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center" (click)="navigate('/employees')">
           <div class="m-r-10 no-shrink" fxFlex="7">
-            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
-              <mat-icon>content_paste</mat-icon>
+            <button mat-fab color="warn" mat-card-icon class="shadow-none actionPrimary-b">
+              <mat-icon>group</mat-icon>
             </button>
           </div>
           <div fxFlex="50">
@@ -149,9 +149,9 @@
 
     <mat-card>
       <mat-card-content>
-        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="d-flex no-block" fxLayout="row" fxLayoutAlign="space-between center" (click)="navigate('/admin')">
           <div class="m-r-10 no-shrink" fxFlex="7">
-            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
+            <button mat-fab color="warn" mat-card-icon class="shadow-none actionPrimary-b">
               <mat-icon>content_paste</mat-icon>
             </button>
           </div>

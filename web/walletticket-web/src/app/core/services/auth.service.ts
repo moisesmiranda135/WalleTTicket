@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthLoginDto } from '../entity/login/authLogin.dto';
 import { AuthLoginResponse } from '../entity/login/AuthLoginResponse';
-import { OkApiResponseList } from '../util/apiResponseInterface';
+import { OkApiResponse, OkApiResponseList } from '../util/apiResponseInterface';
 
 
 const AUTH_BASE_URL = 'auth';
@@ -33,6 +33,8 @@ export class AuthService {
   }
 
 
+
+
   // LocalStorage Saved
 
   setLocalRequestToken(token: string) {
@@ -58,6 +60,14 @@ export class AuthService {
 
   getUserName() {
     return localStorage.getItem('userName');
+  }
+
+  setUserEmail(email: string) {
+    localStorage.setItem('userEmail', email);
+  }
+
+  getUserEmail() {
+    return localStorage.getItem('userEmail');
   }
 
 }

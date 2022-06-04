@@ -1,0 +1,17 @@
+export enum ShopList {
+    sports_soccer,
+    pool,
+    sports_motorsports,
+    sports_tennis,
+    golf_course,
+    pets,
+    shopping_cart,
+    shopping_bag,
+    store,
+    local_florist,
+    developer_mode,
+    local_cafe,
+    directions_car,
+    lunch_dining,
+    pedal_bike,
+}

@@ -59,12 +59,8 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let element" >
                 <div style="width: 100%; text-align: end;">
-                  <button mat-icon-button  class="Pmr-05" matTooltip="Editar Usuario">
+                  <button mat-icon-button  class="Pmr-05" matTooltip="Editar Usuario" (click)="editAdmin(element, element.id)">
                     <mat-icon class="actionPrimary-c">edit</mat-icon>
-                  </button>
-
-                  <button mat-icon-button (click)="deleteAdmin(element.id)" class="Pmr-05" matTooltip="Eliminar Usuario">
-                    <mat-icon class="actionWarn-c">delete</mat-icon>
                   </button>
                 </div>
               </mat-cell>

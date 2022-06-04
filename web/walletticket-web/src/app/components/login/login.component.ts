@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.authService.setLocalRequestToken(loginResult.token);
         this.authService.setRole(loginResult.role);
         this.authService.setUserName(`${loginResult.name}  ${loginResult.lastName}`)
+        this.authService.setUserEmail(`${loginResult.email}`)
       }
     }, error => {
       console.log(error)

@@ -1,6 +1,7 @@
 import { UserDto } from './../../../../core/entity/user/UserDto';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserResponse } from 'src/app/core/entity/user/UserResponse';
 
 @Component({
   selector: 'app-create-employee-dialog',
@@ -15,10 +16,13 @@ export class CreateEmployeeDialogComponent implements OnInit {
   hide = true;
   hide2 = true;
 
-  constructor(private dialogRefe: MatDialogRef<CreateEmployeeDialogComponent>,
+  constructor(private dialogRefe: MatDialogRef<CreateEmployeeDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: { employee: UserDto},
     private dialog: MatDialog,) { }
 
   ngOnInit() {
+    if (this.data) {
+      this.employee = this.data.employee
+    }
   }
 
   saveForm() {

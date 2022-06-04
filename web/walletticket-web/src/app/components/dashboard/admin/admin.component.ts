@@ -1,3 +1,5 @@
+import { AuthService } from 'src/app/core/services/auth.service';
+import { CreateAdminDialogComponent } from './create-admin-dialog/create-admin-dialog.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,9 +8,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserResponse } from 'src/app/core/entity/user/UserResponse';
 import { AdminService } from 'src/app/core/services/admin.service';
-import { EmployeesService } from 'src/app/core/services/employees.service';
 import Swal from 'sweetalert2';
-import { CreateEmployeeDialogComponent } from '../employees/create-employee-dialog/create-employee-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -20,7 +21,7 @@ export class AdminComponent implements OnInit {
   dataSource = new MatTableDataSource<UserResponse>();
   displayedColumns: string[] = ['id', 'email', 'name', 'lastName', 'accions'];
 
-  constructor(private adminService: AdminService, private dialog: MatDialog, private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private adminService: AdminService, private dialog: MatDialog, private _liveAnnouncer: LiveAnnouncer, private router: Router) { }
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -41,7 +42,7 @@ export class AdminComponent implements OnInit {
 	}
 
   createAdmin() {
-    const dialogRef = this.dialog.open(CreateEmployeeDialogComponent, {
+    const dialogRef = this.dialog.open(CreateAdminDialogComponent, {
       width: '80vw',
       autoFocus: false,
       disableClose: true,
@@ -49,7 +50,7 @@ export class AdminComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
 			if (result?.event === 'ok') {
-				this.adminService.createAdmin(result?.employee).subscribe(() => {
+				this.adminService.createAdmin(result?.admin).subscribe(() => {
 					Swal.fire({
 						text: 'El empleado  creado con exito',
 						icon: 'success',
@@ -63,47 +64,30 @@ export class AdminComponent implements OnInit {
 		});
   }
 
-  deleteAdmin(id: number) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-     
-    })
-
-    swalWithBootstrapButtons.fire({
-      title: '¿Estás seguro?',
-      text: "Borrarás el usuario de manera permanente",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, borrar usuario!',
-      cancelButtonText: 'No!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title:'Usuario Borrado con Éxito',
-          icon:'success',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        this.adminService.deleteAdmin(id).subscribe(() => {
-        })
-
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        Swal.fire({
-          title:'Operación Cancelada',
-          icon:'error',
-          showConfirmButton: false,
-          timer: 1500
-        })
+  editAdmin(row: UserResponse, id: number) {
+    const dialogRef = this.dialog.open(CreateAdminDialogComponent, {
+      width: '80vw',
+      autoFocus: false,
+      disableClose: true,
+      data: {
+        admin: row,
       }
-    }).then(() => {
-      this.generateList();
-    });;
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result?.event === 'ok') {
+        this.adminService.editAdmin(result.admin, id).subscribe((c) => {
+          Swal.fire({
+            text: 'Administrador editado con Éxito',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000,
+          }).then( () => {
+            window.location.assign(`admin`);
+          });
+        });
+      }
+    });
   }
 
   announceSortChange(sortState: Sort) {

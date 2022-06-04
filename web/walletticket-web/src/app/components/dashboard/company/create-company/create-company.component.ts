@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';;
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';;
 import { CompanyResponse } from 'src/app/core/entity/company/companyResponse';
 import { CreateEmployeeDialogComponent } from '../../employees/create-employee-dialog/create-employee-dialog.component';
 
@@ -18,10 +18,9 @@ export class CreateCompanyComponent implements OnInit {
 
   company = {} as CompanyResponse;
 
-  constructor(private dialogRefe: MatDialogRef<CreateEmployeeDialogComponent>,
-    private dialog: MatDialog) { }
+  constructor(private dialogRefe: MatDialogRef<CreateEmployeeDialogComponent>,private dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   onChange(event: any): any {

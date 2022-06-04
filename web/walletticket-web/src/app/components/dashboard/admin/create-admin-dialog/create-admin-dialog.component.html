@@ -8,12 +8,12 @@
 
        <mat-form-field fxFlex="49" appearance="fill">
          <mat-label>Escribe un nombre</mat-label>
-         <input matInput required [(ngModel)]="employee.name">
+         <input matInput required [(ngModel)]="admin.name">
        </mat-form-field>
 
        <mat-form-field fxFlex="49" appearance="fill">
          <mat-label>Escribe los Apellidos</mat-label>
-         <input matInput required [(ngModel)]="employee.lastName">
+         <input matInput required [(ngModel)]="admin.lastName">
        </mat-form-field>
 
      </div>
@@ -22,13 +22,13 @@
 
       <mat-form-field fxFlex="49" appearance="fill">
         <mat-label>Escribe un email</mat-label>
-        <input matInput required [(ngModel)]="employee.email">
+        <input matInput required [(ngModel)]="admin.email">
       </mat-form-field>
 
 
        <mat-form-field fxFlex="49" appearance="fill" *ngIf="!this.data">
          <mat-label>Escriba la contraseña</mat-label>
-         <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="employee.password">
+         <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="admin.password">
          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
          </button>

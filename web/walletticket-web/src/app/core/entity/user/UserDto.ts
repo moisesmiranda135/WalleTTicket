@@ -3,5 +3,4 @@ export interface UserDto {
     name: string;
     lastName: string;
     password: string;
-    avatarUrl: string;
 }
