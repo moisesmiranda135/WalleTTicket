@@ -10,6 +10,7 @@ import 'package:walletticket_app/models/ticket/ticket_response.dart';
 import 'package:walletticket_app/repository/ticket_repository/ticket_repository.dart';
 import 'package:walletticket_app/repository/ticket_repository/ticket_repository_impl.dart';
 import 'package:walletticket_app/styles/styles.dart';
+import 'package:walletticket_app/ui/screens/detail_ticket_screen.dart';
 import 'package:walletticket_app/ui/widgets/error_page.dart';
 import 'package:walletticket_app/ui/widgets/shimmer_vertical_list.dart';
 
@@ -187,160 +188,174 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _createTicketViewItem(BuildContext context, TicketResponse ticket) {
-    return Expanded(
-      child: Center(
-        child: Container(
-          width: 375,
-          height: 100,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: Colors.white),
-          margin: const EdgeInsets.only(top: 40),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        topLeft: Radius.circular(20)),
-                    child: Image.network(ticket.productImage),
-                  ),
-                  Positioned(
-                    top: 65,
-                    left: 10,
-                    child: Icon(
-                      Icons.favorite_border_outlined,
-                      color: Colors.white,
+    return InkWell(
+      // onTap: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //         builder: (context) => DetailTicketScreen(ticket: ticket))),
+      onTap: () => showModalBottomSheet(
+          context: context,
+          builder: (context) => Center(
+                child: ElevatedButton(
+                  child: Text("Close"),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              )),
+      child: Expanded(
+        child: Center(
+          child: Container(
+            width: 375,
+            height: 100,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20), color: Colors.white),
+            margin: const EdgeInsets.only(top: 40),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          topLeft: Radius.circular(20)),
+                      child: Image.network(ticket.productImage),
                     ),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Container(
-                    width: 210,
-                    height: 30,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 5.0, left: 10.0),
-                          child: Text(
-                            ticket.title,
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
+                    Positioned(
+                      top: 65,
+                      left: 10,
+                      child: Icon(
+                        Icons.favorite_border_outlined,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: 210,
+                      height: 30,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 5.0, left: 10.0),
+                            child: Text(
+                              ticket.title,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: 210,
-                    height: 40,
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          margin: const EdgeInsets.only(
-                              top: 5.0, left: 5.0, right: 5),
-                          child: ClipRRect(
-                            child: Image.network(ticket.companyImage),
+                    Container(
+                      width: 210,
+                      height: 40,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 40,
+                            height: 40,
+                            margin: const EdgeInsets.only(
+                                top: 5.0, left: 5.0, right: 5),
+                            child: ClipRRect(
+                              child: Image.network(ticket.companyImage),
+                            ),
                           ),
-                        ),
-                        Container(
-                            width: 150,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.0)),
-                            ),
-                            margin: const EdgeInsets.only(
-                              top: 5.0,
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10.0,
-                                    right: 5.0,
+                          Container(
+                              width: 150,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0)),
+                              ),
+                              margin: const EdgeInsets.only(
+                                top: 5.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 10.0,
+                                      right: 5.0,
+                                    ),
+                                    child: Icon(
+                                      Icons.favorite_border_outlined,
+                                    ),
                                   ),
-                                  child: Icon(
-                                    Icons.favorite_border_outlined,
-                                  ),
-                                ),
-                                //Text(ticket.categoryName, softWrap: true),
-                                Text(ticket.categoryName, softWrap: true),
-                              ],
-                            )),
-                      ],
+                                  //Text(ticket.categoryName, softWrap: true),
+                                  Text(ticket.categoryName, softWrap: true),
+                                ],
+                              )),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 210,
-                    height: 30,
-                    child: Row(
-                      children: [
-                        Container(
-                            height: 20,
-                            width: 140,
-                            color: Colors.green,
-                            margin: const EdgeInsets.only(
-                              top: 10.0,
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10.0,
-                                    right: 5.0,
+                    SizedBox(
+                      width: 210,
+                      height: 30,
+                      child: Row(
+                        children: [
+                          Container(
+                              height: 20,
+                              width: 140,
+                              color: Colors.green,
+                              margin: const EdgeInsets.only(
+                                top: 10.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 10.0,
+                                      right: 5.0,
+                                    ),
+                                    child: Icon(
+                                      Icons.info_outlined,
+                                      color: Colors.white,
+                                      size: 15,
+                                    ),
                                   ),
-                                  child: Icon(
-                                    Icons.info_outlined,
-                                    color: Colors.white,
-                                    size: 15,
+                                  //Text(ticket.categoryName, softWrap: true),
+                                  Text("Más de 3 meses",
+                                      style: TextStyle(color: Colors.white)),
+                                ],
+                              )),
+                          Container(
+                              height: 20,
+                              width: 70,
+                              margin: const EdgeInsets.only(
+                                top: 10.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 5.0,
+                                      right: 3.0,
+                                    ),
+                                    child: Icon(
+                                      Icons.euro_outlined,
+                                      color: Colors.black,
+                                      size: 15,
+                                    ),
                                   ),
-                                ),
-                                //Text(ticket.categoryName, softWrap: true),
-                                Text("Más de 3 meses",
-                                    style: TextStyle(color: Colors.white)),
-                              ],
-                            )),
-                        Container(
-                            height: 20,
-                            width: 70,
-                            margin: const EdgeInsets.only(
-                              top: 10.0,
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 5.0,
-                                    right: 3.0,
-                                  ),
-                                  child: Icon(
-                                    Icons.euro_outlined,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                ),
-                                //Text(ticket.categoryName, softWrap: true),
-                                Text(ticket.price.toString(),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700)),
-                              ],
-                            )),
-                      ],
+                                  //Text(ticket.categoryName, softWrap: true),
+                                  Text(ticket.price.toString(),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700)),
+                                ],
+                              )),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
