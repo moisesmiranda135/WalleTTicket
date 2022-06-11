@@ -63,12 +63,6 @@
                     <mat-icon class="actionPrimary-c">edit</mat-icon>
                   </button>
 
-                  <button mat-icon-button matSuffix
-                    [attr.aria-label]="'Hide password'" (click)="changeEnabled(element.enabled, element.id)"
-                     [attr.aria-pressed]="element.enabled" matTooltip="Deshabilitar/Habilitar Usuario">
-                    <mat-icon class="primary">{{element.enabled ? 'visibility' : 'visibility_off'}}</mat-icon>
-                  </button>
-
                   <button mat-icon-button (click)="deleteEmployee(element.id)" class="Pmr-05" matTooltip="Eliminar Usuario">
                     <mat-icon class="actionWarn-c">delete</mat-icon>
                   </button>
