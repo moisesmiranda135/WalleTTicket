@@ -1,5 +1,6 @@
 package com.salesianos.triana.dam.walleTTicket.users.services;
 
+import com.salesianos.triana.dam.walleTTicket.errors.exceptions.ListEntityNotFoundException;
 import com.salesianos.triana.dam.walleTTicket.errors.exceptions.NotAuthorizationException;
 import com.salesianos.triana.dam.walleTTicket.errors.exceptions.SingleEntityNotFoundException;
 import com.salesianos.triana.dam.walleTTicket.model.Ticket;
@@ -90,7 +91,14 @@ public class UserService extends BaseService<UserEntity, Long, UserRepository> i
 
 
     public List<UserEntity>findAll() {
-        return repositorio.findAll();
+
+        List<UserEntity> data = repositorio.findAll();
+
+        if (data.isEmpty()) {
+            throw new ListEntityNotFoundException(UserEntity.class);
+        }
+
+        return data;
     }
 
     public List<UserEntity>findAllEmployee() {

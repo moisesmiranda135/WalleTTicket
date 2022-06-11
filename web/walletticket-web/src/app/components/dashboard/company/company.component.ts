@@ -54,7 +54,7 @@ export class CompanyComponent implements OnInit {
       if (result?.event === 'ok') {
         this.companyService.createCompany(result.company, result.image).subscribe((c) => {
             Swal.fire({
-              text: 'Categoría creada con Éxito',
+              text: 'Compañía creada con Éxito',
               icon: 'success',
               showConfirmButton: false,
               timer: 2000,

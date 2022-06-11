@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit {
 			if (result?.event === 'ok') {
 				this.adminService.createAdmin(result?.admin).subscribe(() => {
 					Swal.fire({
-						text: 'El empleado  creado con exito',
+						text: 'El administrador creado con exito',
 						icon: 'success',
 						showConfirmButton: false,
 						timer: 2000,

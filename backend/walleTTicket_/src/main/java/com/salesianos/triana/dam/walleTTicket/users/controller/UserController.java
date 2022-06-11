@@ -1,5 +1,6 @@
 package com.salesianos.triana.dam.walleTTicket.users.controller;
 
+import com.salesianos.triana.dam.walleTTicket.errors.exceptions.ListEntityNotFoundException;
 import com.salesianos.triana.dam.walleTTicket.users.dto.CreateUserDto;
 import com.salesianos.triana.dam.walleTTicket.users.dto.GetUserDto;
 import com.salesianos.triana.dam.walleTTicket.users.dto.UserDtoConverter;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -52,7 +55,15 @@ public class UserController {
 
     @GetMapping("/auth/all")
     public ResponseEntity<?> listAll() {
-        return ResponseEntity.ok(userService.findAll());
+
+        List<UserEntity> data = userService.findAll();
+
+            List<GetUserDto> result =
+                    data.stream()
+                            .map(userDtoConverter::convertUserToGetUserDto)
+                            .collect(Collectors.toList());
+
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/auth/all/employee")

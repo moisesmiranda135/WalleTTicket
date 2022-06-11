@@ -38,7 +38,7 @@ export class CompanyItemComponent implements OnInit {
       if (result.isConfirmed) {
         this.companyService.deleteCompany(IdCompany).subscribe((e) => {
           Swal.fire({
-            text: 'Categoría eliminada con éxito',
+            text: 'Compañía eliminada con éxito',
             icon: 'success',
             showConfirmButton: false,
             timer: 1500,
