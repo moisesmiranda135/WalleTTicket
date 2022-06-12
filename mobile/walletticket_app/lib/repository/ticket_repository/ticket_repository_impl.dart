@@ -28,4 +28,37 @@ class TicketRepositoryImpl extends TicketRepository {
       throw Exception('Fail to load ticket');
     }
   }
+
+  @override
+  Future addFavorite(int id) async {
+    final response = await _client.post(
+        Uri.parse('http://10.0.2.2:8080/ticket/favorite/add/${id}'),
+        headers: {'Authorization': 'Bearer ${Constant.token}'});
+    if (response.statusCode == 204) {
+    } else {
+      throw Exception('Fail to load ticket');
+    }
+  }
+
+  @override
+  Future deleteFavorite(int id) async {
+    final response = await _client.post(
+        Uri.parse('http://10.0.2.2:8080/ticket/favorite/delete/${id}'),
+        headers: {'Authorization': 'Bearer ${Constant.token}'});
+    if (response.statusCode == 204) {
+    } else {
+      throw Exception('Fail to load ticket');
+    }
+  }
+
+  @override
+  Future deleteTicket(int id) async {
+    final response = await _client.delete(
+        Uri.parse('http://10.0.2.2:8080/ticket/${id}'),
+        headers: {'Authorization': 'Bearer ${Constant.token}'});
+    if (response.statusCode == 204) {
+    } else {
+      throw Exception('Fail to load ticket');
+    }
+  }
 }

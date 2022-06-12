@@ -14,6 +14,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>, JpaSpecif
     List<Ticket> findAllTicketByCompanyId(Long id);
     List<Ticket> findByUserEntityOrderByDateInitDesc(UserEntity userEntity);
 
+    List<Ticket> findAllTicketByIsFavoriteAndUserEntity(Boolean isFavorite, UserEntity userEntity);
+
     //List<Ticket> findAllTicketByUserEntityId(Long id);
     // List<Ticket> findByUserEntityId(Long id);  // Esta es correcta
 }

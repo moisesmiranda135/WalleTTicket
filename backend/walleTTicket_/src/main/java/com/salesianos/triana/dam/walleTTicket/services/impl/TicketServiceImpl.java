@@ -178,6 +178,21 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public List<GetTicketDto> findAllUserByIsFavorite(UserEntity u) {
+        List<Ticket> data = repository.findAllTicketByIsFavoriteAndUserEntity(true, u);
+
+        if (data.isEmpty()) {
+            throw new ListEntityNotFoundException(Ticket.class);
+        } else {
+            List<GetTicketDto> result =
+                    data.stream()
+                            .map(converter::convertTicketToGetTicketDto)
+                            .collect(Collectors.toList());
+            return result;
+        }
+    }
+
+    @Override
     public GetTicketDto findById(Long id) {
         Optional<Ticket> data = repository.findById(id);
 

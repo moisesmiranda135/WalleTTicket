@@ -14,6 +14,7 @@ public interface TicketService {
     List<GetTicketDto> findAll();
     List<GetTicketDto> findAllUser(UserEntity u,Optional<Long>idUser, Optional<String> title, Optional<String> categoryName, Optional<String> companyName,
                                    Optional<Double>minPrice, Optional<Double>maxPrice);
+    List<GetTicketDto> findAllUserByIsFavorite(UserEntity u);
     GetTicketDto findById(Long id);
     CreateTicketDto edit(CreateTicketDto dto, Long id, MultipartFile fileTicket, MultipartFile fileProduct, UserEntity u);
     void deleteById (Long id);

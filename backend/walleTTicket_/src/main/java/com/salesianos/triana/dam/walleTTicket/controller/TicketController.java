@@ -38,6 +38,11 @@ public class TicketController {
         return ResponseEntity.ok(ticketService.findAll());
     }
 
+    @GetMapping("/all/user/favorite")
+    public ResponseEntity<?> listAll(@AuthenticationPrincipal UserEntity u) {
+        return ResponseEntity.ok(ticketService.findAllUserByIsFavorite(u));
+    }
+
     @GetMapping("/user")
     public ResponseEntity<?> listUser(@AuthenticationPrincipal UserEntity u,
                                       @RequestParam(required = false) Optional<Long>idUser,

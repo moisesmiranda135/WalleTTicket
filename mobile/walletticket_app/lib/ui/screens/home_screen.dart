@@ -60,9 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    super.initState();
     ticketRepository = TicketRepositoryImpl();
     _ticketBloc = TicketBloc(ticketRepository)..add(const FetchTicketByUser());
+    super.initState();
   }
 
   @override
@@ -194,11 +194,219 @@ class _MyHomePageState extends State<MyHomePage> {
       //     MaterialPageRoute(
       //         builder: (context) => DetailTicketScreen(ticket: ticket))),
       onTap: () => showModalBottomSheet(
+          isScrollControlled: true,
           context: context,
           builder: (context) => Center(
-                child: ElevatedButton(
-                  child: Text("Close"),
-                  onPressed: () => Navigator.pop(context),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(
+                              top: 25, left: 20, right: 120, bottom: 30),
+                          child: Text(
+                            ticket.title,
+                            style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black),
+                          ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.cancel_outlined),
+                          iconSize: 30,
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(ticket.description))
+                      ],
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
+                            child: const Text(
+                              'Fecha de compra:',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          Text(ticket.dateInit),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 5),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 20, right: 5),
+                                  child: const Text(
+                                    'Compañía:',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                                Text(ticket.companyName),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(left: 7, right: 5),
+                                child: const Text(
+                                  'Valor:',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              Text(ticket.price.toString()),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 7),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 20, right: 5),
+                                  child: const Text(
+                                    'Categoría:',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                                Text(ticket.categoryName),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(left: 10, right: 5),
+                                child: const Text(
+                                  'Garantía:',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              Text(ticket.dateEnd),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 40),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              const Text(
+                                'Ticket',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.black),
+                              ),
+                              Image.network(
+                                ticket.ticketImage,
+                                height: 200,
+                                width: 190,
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              const Text(
+                                'Producto',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.black),
+                              ),
+                              Image.network(
+                                ticket.productImage,
+                                height: 200,
+                                width: 190,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                          height: 45,
+                          width: 140,
+                          margin: const EdgeInsets.only(top: 40),
+                          decoration: BoxDecoration(
+                              color: Colors.red[400],
+                              borderRadius: BorderRadius.circular(18)),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                ticketRepository.deleteTicket(ticket.id);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomeScreen()));
+                              });
+                            },
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.delete_outlined,
+                                    color: Colors.white,
+                                  ),
+                                  iconSize: 30,
+                                  onPressed: () => Navigator.pop(context),
+                                ),
+                                Text(
+                                  'Eliminar'.toUpperCase(),
+                                  style: const TextStyle(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          )),
+                    ),
+                  ],
                 ),
               )),
       child: Expanded(
@@ -215,7 +423,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(20),
                           topLeft: Radius.circular(20)),
                       child: Image.network(ticket.productImage),
@@ -223,16 +431,29 @@ class _MyHomePageState extends State<MyHomePage> {
                     Positioned(
                       top: 65,
                       left: 10,
-                      child: Icon(
-                        Icons.favorite_border_outlined,
-                        color: Colors.white,
+                      child: GestureDetector(
+                        onTap: () {
+                          if (ticket.isFavorite) {
+                            ticketRepository.deleteFavorite(ticket.id);
+                          } else {
+                            ticketRepository.addFavorite(ticket.id);
+                          }
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
+                        },
+                        child: Icon(
+                          Icons.favorite_border_outlined,
+                          color: ticket.isFavorite ? Colors.red : Colors.white,
+                        ),
                       ),
                     )
                   ],
                 ),
                 Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 210,
                       height: 30,
                       child: Row(
@@ -241,7 +462,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             margin: const EdgeInsets.only(top: 5.0, left: 10.0),
                             child: Text(
                               ticket.title,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500),
@@ -250,7 +471,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: 210,
                       height: 40,
                       child: Row(
@@ -268,8 +489,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               width: 150,
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15.0)),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(15.0)),
                               ),
                               margin: const EdgeInsets.only(
                                 top: 5.0,
@@ -281,12 +502,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                       left: 10.0,
                                       right: 5.0,
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.favorite_border_outlined,
                                     ),
                                   ),
-                                  //Text(ticket.categoryName, softWrap: true),
-                                  Text(ticket.categoryName, softWrap: true),
+                                  Flexible(
+                                    child: Text(
+                                      ticket.categoryName,
+                                      softWrap: true,
+                                      overflow: TextOverflow.clip,
+                                      maxLines: 1,
+                                    ),
+                                  ),
                                 ],
                               )),
                         ],
@@ -311,14 +538,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       left: 10.0,
                                       right: 5.0,
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.info_outlined,
                                       color: Colors.white,
                                       size: 15,
                                     ),
                                   ),
                                   //Text(ticket.categoryName, softWrap: true),
-                                  Text("Más de 3 meses",
+                                  const Text("Más de 3 meses",
                                       style: TextStyle(color: Colors.white)),
                                 ],
                               )),
@@ -335,7 +562,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       left: 5.0,
                                       right: 3.0,
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.euro_outlined,
                                       color: Colors.black,
                                       size: 15,
@@ -343,7 +570,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                   //Text(ticket.categoryName, softWrap: true),
                                   Text(ticket.price.toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w700)),
