@@ -138,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(
-                            top: 40, left: 40, bottom: 10),
+                            top: 30, left: 40, bottom: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: const [
@@ -229,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 10, left: 40),
+                        margin: const EdgeInsets.only(left: 40),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
