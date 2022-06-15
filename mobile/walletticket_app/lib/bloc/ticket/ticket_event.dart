@@ -14,3 +14,10 @@ class FetchTicketByUser extends TicketEvent {
   @override
   List<Object> get props => [];
 }
+
+class FetchTicketByUserAndFavorite extends TicketEvent {
+  const FetchTicketByUserAndFavorite();
+
+  @override
+  List<Object> get props => [];
+}

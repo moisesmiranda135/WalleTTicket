@@ -1,27 +1,19 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:http/http.dart' as http;
 import 'package:walletticket_app/bloc/ticket/ticket_bloc.dart';
 import 'package:walletticket_app/models/ticket/ticket_response.dart';
 import 'package:walletticket_app/repository/ticket_repository/ticket_repository.dart';
 import 'package:walletticket_app/repository/ticket_repository/ticket_repository_impl.dart';
-import 'package:walletticket_app/styles/styles.dart';
-import 'package:walletticket_app/ui/screens/detail_ticket_screen.dart';
 import 'package:walletticket_app/ui/widgets/error_page.dart';
 import 'package:walletticket_app/ui/widgets/shimmer_vertical_list.dart';
 
-import 'create_ticket_screen.dart';
-
 void main() {
-  runApp(const HomeScreen());
+  runApp(const FavoriteTicketScreen());
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class FavoriteTicketScreen extends StatelessWidget {
+  const FavoriteTicketScreen({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -61,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     ticketRepository = TicketRepositoryImpl();
-    _ticketBloc = TicketBloc(ticketRepository)..add(const FetchTicketByUser());
+    _ticketBloc = TicketBloc(ticketRepository)
+      ..add(const FetchTicketByUserAndFavorite());
     super.initState();
   }
 
@@ -85,49 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Column(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 20, left: 30),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Todos los Tickets",
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black),
-                              ),
-                              Container(
-                                width: 80,
-                              ),
-                              Column(
-                                children: [
-                                  IconButton(
-                                    icon: Icon(Icons.post_add_outlined),
-                                    iconSize: 50,
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                CreateTicketScreen()),
-                                      );
-                                    },
-                                  ),
-                                  Text(
-                                    "Nuevo Ticket",
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w800,
-                                        color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
                         RefreshIndicator(
                             onRefresh: () async {
-                              _ticketBloc.add(const FetchTicketByUser());
+                              _ticketBloc
+                                  .add(const FetchTicketByUserAndFavorite());
                             },
                             child: SizedBox(
                               height: MediaQuery.of(context).size.height,
@@ -156,10 +110,12 @@ class _MyHomePageState extends State<MyHomePage> {
           return ErrorPage(
             message: state.message,
             retry: () {
-              context.watch<TicketBloc>().add(const FetchTicketByUser());
+              context
+                  .watch<TicketBloc>()
+                  .add(const FetchTicketByUserAndFavorite());
             },
           );
-        } else if (state is TicketFetched) {
+        } else if (state is TicketFavoriteFetched) {
           return _createTicketView(context, state.ticket);
         } else {
           return const Text('Not support');
@@ -386,7 +342,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const HomeScreen()));
+                                            const FavoriteTicketScreen()));
                               });
                             },
                             child: Row(
@@ -443,7 +399,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()));
+                                  builder: (context) =>
+                                      const FavoriteTicketScreen()));
                         },
                         child: Icon(
                           Icons.favorite_border_outlined,

@@ -21,6 +21,15 @@ class TicketFetched extends TicketState {
   List<Object> get props => [ticket];
 }
 
+class TicketFavoriteFetched extends TicketState {
+  final List<TicketResponse> ticket;
+
+  const TicketFavoriteFetched(this.ticket);
+
+  @override
+  List<Object> get props => [ticket];
+}
+
 class TicketFetchError extends TicketState {
   final String message;
   const TicketFetchError(this.message);

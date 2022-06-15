@@ -18,7 +18,21 @@ class TicketRepositoryImpl extends TicketRepository {
   @override
   Future<List<TicketResponse>> getAllbyUser() async {
     final response = await _client.get(
-        Uri.parse('http://10.0.2.2:8080/ticket/all'),
+        Uri.parse('http://10.0.2.2:8080/ticket/user'),
+        headers: {'Authorization': 'Bearer ${Constant.token}'});
+    if (response.statusCode == 200) {
+      return (json.decode(response.body) as List)
+          .map((i) => TicketResponse.fromJson(i))
+          .toList();
+    } else {
+      throw Exception('Fail to load ticket');
+    }
+  }
+
+  @override
+  Future<List<TicketResponse>> getAllbyUserAndFavorite() async {
+    final response = await _client.get(
+        Uri.parse('http://10.0.2.2:8080/ticket/all/user/favorite'),
         headers: {'Authorization': 'Bearer ${Constant.token}'});
     if (response.statusCode == 200) {
       return (json.decode(response.body) as List)

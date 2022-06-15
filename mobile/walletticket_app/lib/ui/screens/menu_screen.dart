@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:walletticket_app/styles/styles.dart';
+import 'package:walletticket_app/ui/screens/favorite_ticket_screen.dart';
 import 'package:walletticket_app/ui/screens/home_screen.dart';
 import 'package:walletticket_app/ui/screens/profile_screen.dart';
 
@@ -26,7 +27,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    const Text("P2dddddddddddd"),
+    const FavoriteTicketScreen(),
     const ProfileScreen()
   ];
 

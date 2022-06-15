@@ -6,6 +6,7 @@ import 'package:walletticket_app/models/ticket/ticket_response.dart';
 
 abstract class TicketRepository {
   Future<List<TicketResponse>> getAllbyUser();
+  Future<List<TicketResponse>> getAllbyUserAndFavorite();
   Future addFavorite(int id);
   Future deleteFavorite(int id);
   Future deleteTicket(int id);

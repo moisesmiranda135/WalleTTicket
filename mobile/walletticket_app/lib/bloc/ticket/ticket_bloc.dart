@@ -12,6 +12,7 @@ class TicketBloc extends Bloc<TicketEvent, TicketState> {
 
   TicketBloc(this.ticketRepository) : super(TicketInitial()) {
     on<FetchTicketByUser>(_ticketFetched);
+    on<FetchTicketByUserAndFavorite>(_ticketFavoriteFetched);
   }
 
   void _ticketFetched(
@@ -19,6 +20,17 @@ class TicketBloc extends Bloc<TicketEvent, TicketState> {
     try {
       final ticket = await ticketRepository.getAllbyUser();
       emit(TicketFetched(ticket));
+      return;
+    } on Exception catch (e) {
+      emit(TicketFetchError(e.toString()));
+    }
+  }
+
+  void _ticketFavoriteFetched(
+      FetchTicketByUserAndFavorite event, Emitter<TicketState> emit) async {
+    try {
+      final ticket = await ticketRepository.getAllbyUserAndFavorite();
+      emit(TicketFavoriteFetched(ticket));
       return;
     } on Exception catch (e) {
       emit(TicketFetchError(e.toString()));

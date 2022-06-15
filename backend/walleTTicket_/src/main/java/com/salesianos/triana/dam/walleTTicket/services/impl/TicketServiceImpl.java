@@ -179,7 +179,7 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public List<GetTicketDto> findAllUserByIsFavorite(UserEntity u) {
-        List<Ticket> data = repository.findAllTicketByIsFavoriteAndUserEntity(true, u);
+        List<Ticket> data = repository.findAllByIsFavoriteAndUserEntity(true, u);
 
         if (data.isEmpty()) {
             throw new ListEntityNotFoundException(Ticket.class);
