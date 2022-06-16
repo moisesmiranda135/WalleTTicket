@@ -27,15 +27,13 @@ public class UserEntity implements UserDetails {
     private String lastName;
     private String email;
     private String password;
-    private String avatarUrl;
+    private boolean isEnabled;
 
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
     @OneToMany (mappedBy = "userEntity")
     private List<Ticket> ticketsList = new ArrayList<>();
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

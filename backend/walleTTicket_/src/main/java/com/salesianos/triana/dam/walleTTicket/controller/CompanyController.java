@@ -3,6 +3,7 @@ package com.salesianos.triana.dam.walleTTicket.controller;
 import com.salesianos.triana.dam.walleTTicket.dto.Company.CreateCompanyDto;
 import com.salesianos.triana.dam.walleTTicket.dto.Company.GetCompanyDto;
 import com.salesianos.triana.dam.walleTTicket.services.impl.CompanyServiceImpl;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/company")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "walleTTicket")
 public class CompanyController {
 
     private final CompanyServiceImpl companyService;

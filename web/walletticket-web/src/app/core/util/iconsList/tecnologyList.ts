@@ -1,0 +1,17 @@
+export enum TecnologyList {
+    language,
+    fingerprint,
+    print,
+    sports_esports,
+    videogame_asset,
+    gamepad,
+    tablet,
+    dock,
+    devices,
+    dvr,
+    developer_mode,
+    screen_search_desktop,
+    headphones,
+    desktop_mac,
+    laptop_windows,
+}

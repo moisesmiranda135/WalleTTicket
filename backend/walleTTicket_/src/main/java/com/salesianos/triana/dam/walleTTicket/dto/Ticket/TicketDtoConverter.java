@@ -13,14 +13,18 @@ public class TicketDtoConverter {
                 .description(t.getDescription())
                 .price(t.getPrice())
                 .categoryName(t.getCategory().getTitle())
-                .companyName(t.getCategory().getTitle())
+                .categoryIcon(t.getCategory().getIcon())
+                .companyName(t.getCompany().getName())
+                .companyImage(t.getCompany().getImage())
                 .dateInit(t.getDateInit())
                 .dateEnd(t.getDateEnd())
                 .ticketImage(t.getTicketImage())
                 .productImage(t.getProductImage())
                 .isFavorite(t.getIsFavorite())
+                .userName(t.getUserEntity().getName())
+                .userLastName(t.getUserEntity().getLastName())
+                .userEmail(t.getUserEntity().getEmail())
                 .build();
-
     }
 
     public CreateTicketDto convertTicketToCreateTicketDto(Ticket t) {
@@ -37,6 +41,5 @@ public class TicketDtoConverter {
                 .productImage(t.getProductImage())
                 .isFavorite(t.getIsFavorite())
                 .build();
-
     }
 }

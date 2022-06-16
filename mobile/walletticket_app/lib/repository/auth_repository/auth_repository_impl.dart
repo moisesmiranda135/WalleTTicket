@@ -29,16 +29,24 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<RegisterResponse> register(RegisterDto registerDto) async {
-    Map<String, String> headers = {'Content-Type': 'application/json'};
+    Map<String, String> headers = {'Content-Type': 'multipart/form-data'};
 
-    final response = await _client.post(
-        Uri.parse('http://10.0.2.2:8080/auth/register/user'),
-        headers: headers,
-        body: jsonEncode(registerDto.toJson()));
+    var uri = Uri.parse('http://10.0.2.2:8080/auth/register/user');
+
+    var request = http.MultipartRequest('POST', uri)
+      ..files.add(await http.MultipartFile.fromString(
+          'json', jsonEncode(registerDto.toJson()),
+          contentType: MediaType('application', 'json')))
+      ..headers.addAll(headers);
+
+    var response = await request.send();
+
+    final res = await response.stream.bytesToString();
+
     if (response.statusCode == 200) {
-      return RegisterResponse.fromJson(json.decode(response.body));
+      return RegisterResponse.fromJson(await jsonDecode(res));
     } else {
-      throw Exception('Fail to Register');
+      throw Exception('Fail to register');
     }
   }
 

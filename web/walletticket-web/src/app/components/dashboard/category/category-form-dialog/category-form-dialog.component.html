@@ -1,0 +1,61 @@
+<div style="margin-left: 20px;">
+    <h1>Nueva Categoría</h1>
+</div>
+
+
+<div>
+    <mat-card>
+        <mat-card-content>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="width: 100%;">
+                    <div fxFlex="20">
+                        <span>1º Escribe un título para la categoría</span>
+                    </div>
+                    
+                    <div fxFlex="80">
+                    <mat-form-field>
+                        <input matInput placeholder="Nombre de la Categoría" [(ngModel)]="category.title"
+                        autocomplete="off">
+                    </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="width: 100%;">
+                    <div fxFlex="20">
+                        <span>2º Selecciona un icono para la categoría</span>
+                    </div>
+
+                    <div fxFlex="80">
+                        <mat-icon class="Pmr-2">{{category.icon}}</mat-icon>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="width: 100%;">
+                    <mat-tab-group mat-align-tabs="start">
+                        <mat-tab label="Comunicación">
+                            <button mat-raised-button class="actionPrimary-b" *ngFor="let item of generateIconsCommunication()" (click)="changeIconValue(item)">
+                                <mat-icon class="Pmr-2" >{{ item }}</mat-icon>
+                              </button>
+                        </mat-tab>
+                        <mat-tab label="Teconología">
+                            <button mat-raised-button class="actionPrimary-b" *ngFor="let item of generateIconsTecnology()" (click)="changeIconValue(item)">
+                                <mat-icon class="Pmr-2" >{{ item }}</mat-icon>
+                              </button>
+                        </mat-tab>
+                        
+                        <mat-tab label="Comercio">
+                            <button mat-raised-button class="actionPrimary-b" *ngFor="let item of generateIconsShop()" (click)="changeIconValue(item)">
+                                <mat-icon class="Pmr-2" >{{ item }}</mat-icon>
+                              </button>
+                        </mat-tab>
+                      </mat-tab-group>
+                </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="end">
+        <button mat-raised-button matTooltip="Guardar" class="actionAccent-b" (click)="saveCategory()"
+            style="margin-right: 15px;">Guardar</button>
+        <button mat-raised-button matTooltip="Salir" (click)="closeDialog()" color="warn"
+            style="margin-right: 15px;">Salir</button>
+    </div>
+</div>

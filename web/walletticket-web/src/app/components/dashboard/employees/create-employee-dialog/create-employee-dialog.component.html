@@ -1,0 +1,44 @@
+<div style="margin-left: 20px;">
+  <h1>{{dialogsTitle ? 'Nuevo Empleado' : 'Editar Empleado'}}</h1>
+</div>
+
+<mat-card>
+ <mat-card-content>
+     <div fxLayout="row" fxLayoutAlign="space-between center" class="Pmt-2">
+
+       <mat-form-field fxFlex="49" appearance="fill">
+         <mat-label>Escribe un nombre</mat-label>
+         <input matInput required [(ngModel)]="employee.name">
+       </mat-form-field>
+
+       <mat-form-field fxFlex="49" appearance="fill">
+         <mat-label>Escribe los Apellidos</mat-label>
+         <input matInput required [(ngModel)]="employee.lastName">
+       </mat-form-field>
+
+     </div>
+
+     <div fxLayout="row" fxLayoutAlign="space-between center" class="Pmt-2">
+
+      <mat-form-field fxFlex="49" appearance="fill">
+        <mat-label>Escribe un email</mat-label>
+        <input matInput required [(ngModel)]="employee.email">
+      </mat-form-field>
+
+
+       <mat-form-field fxFlex="49" appearance="fill" *ngIf="!this.data">
+         <mat-label>Escriba la contraseña</mat-label>
+         <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="employee.password">
+         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+         </button>
+       </mat-form-field>
+
+     </div>
+
+     <div fxLayout="row" fxLayoutAlign="end center" class="Pmt-2"> 
+       <button mat-raised-button (click)="saveForm()" color="primary" matTooltip="Guardar Usuario" style="margin-right: 15px;">Guardar</button>
+       <button mat-raised-button (click)="closeDialog()" color="warn" matTooltip="Salir de la selección">Salir</button>
+     </div>
+ </mat-card-content>
+</mat-card>

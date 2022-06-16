@@ -1,0 +1,35 @@
+.color{
+	color: #67757c !important;
+}
+
+.main{
+	padding: 20px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // @include flexbox($direction: column, $justifyContent: center);
+    text-align: center;
+
+    &__label-lang {
+        margin-right: 5px;
+    }
+
+    background-image: url('/assets/img/background/login-register.jpg');
+    background-size: cover;
+}
+
+.card{
+    width: 400px;
+    min-width: 280px;
+    margin: 0 auto;
+    vertical-align: middle;
+    background-color: white;
+    padding: 1%;
+    border-radius: 2%;
+}
+
+.login{
+	margin-top: 2%;
+	margin-bottom: 2%;
+}

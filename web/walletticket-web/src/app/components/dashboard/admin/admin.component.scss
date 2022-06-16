@@ -1,0 +1,27 @@
+.table-responsive {
+	margin: auto;
+	width: 99%;
+	height: 75vh;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+table {
+    width: 100%;
+}
+
+
+.header-align-right {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.not-found-text{
+    color: gray;
+    font-size: 40px;
+}
+
+.not-found-icon {
+    font-size: 70px;
+    color: gray;
+}

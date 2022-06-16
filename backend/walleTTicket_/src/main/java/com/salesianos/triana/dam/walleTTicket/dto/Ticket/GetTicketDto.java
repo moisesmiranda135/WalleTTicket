@@ -22,5 +22,10 @@ public class GetTicketDto {
     private Boolean isFavorite;
 
     private String categoryName;
+    private String categoryIcon;
     private String companyName;
+    private String companyImage;
+    private String userName;
+    private String userLastName;
+    private String userEmail;
 }

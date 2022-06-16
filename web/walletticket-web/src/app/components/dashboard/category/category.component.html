@@ -1,0 +1,94 @@
+<app-toolbar></app-toolbar>
+
+
+<mat-card>
+    <mat-card-content class="Pml-1 Pmr-1">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+  
+            <h2 fxFlex="35" class="Pmr-1" style="color: #009bf6 !important; font-size: 25px; margin: auto">Listado de Categorías</h2>
+  
+            <div fxFlex="40">
+                <mat-form-field>
+                    <mat-label>Buscar por Título de la Categoría</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" #input>
+                </mat-form-field>
+            </div>
+  
+            <div fxFlex="25" fxLayout="row">
+            </div>
+  
+            <button fxFlex="10" mat-raised-button class="actionPrimary-b" matTooltip="Crear Recibo"
+                (click)="createCategory()">
+                <mat-icon>add</mat-icon> Nueva Categoría
+            </button>
+  
+        </div>
+    </mat-card-content>
+  </mat-card>
+
+<div>
+    <mat-card>
+        <mat-card-content>
+            <div class="example-container m-t-20">
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource" matSort matTableExporter>
+
+                        <ng-container matColumnDef="id">
+                            <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="title">
+                            <mat-header-cell *matHeaderCellDef> Titulo </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="icon">
+                            <mat-header-cell *matHeaderCellDef> Icono </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.icon}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="iconImage">
+                            <mat-header-cell *matHeaderCellDef> Visualización del icono </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <mat-icon>{{element.icon}}</mat-icon>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="actions">
+                            <mat-header-cell *matHeaderCellDef class="header-align-right" style="text-align: right;">
+                                <div style="margin-right: 15px;"> Acciones</div>
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <div style="width: 100%; text-align: end;">
+                                    <button mat-icon-button matTooltip="Eliminar Categoría"
+                                        (click)="deleteCategory(element.id)" class="actionWarn-c">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
+                                    <button mat-icon-button matTooltip="Editar Categoría"
+                                        (click)="editCategory(element)" class="actionAccent-c">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let element; columns: displayedColumns;"></mat-row>
+                        <div fxLayout="row" *matNoDataRow style="height: 300px; width: 100%;">
+                            <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%;">
+                                <h1 class="not-found-text"> No se encontraron datos en la búsqueda</h1>
+                                <mat-icon class="not-found-icon">error_outline</mat-icon>
+                            </div>
+                        </div>
+                    </table>
+
+                    <mat-paginator style="position: absolute; bottom:0; right: 0;" [pageSizeOptions]="[5, 10, 20]" 
+                    showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

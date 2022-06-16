@@ -1,4 +1,4 @@
 class Constant {
   static String token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ1Nzc3Nzk5LCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6dHJ1ZX0.9w2Kbf-_dgOPrZYN5CLM6QXQz-UDwkOQXgIBH7l3mAE";
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNjU1MzM2NDUzLCJub21icmUiOiJBZHJpw6FuIiwiYXBlbGxpZG9zIjoiUm9tZXJvIFJvbWVybyIsInJvbCI6IlVTRVIifQ.BcELv6ndNKZoZ-qGB7ongssfYJfCm4z1n0WDELhB63c";
 }

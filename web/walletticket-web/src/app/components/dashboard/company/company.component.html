@@ -1,0 +1,26 @@
+<app-toolbar></app-toolbar>
+
+<mat-card>
+  <mat-card-content class="Pml-1 Pmr-1">
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="height: 60px;">
+          <!-- <div fxFlex="15" fxLayout="row" fxLayoutAlign="start center" class="w100">
+              <h2 class="Pmr-1">Listado de Compañías:</h2>
+          </div> -->
+
+          <h2 fxFlex="15" class="Pmr-1" style="color: #009bf6 !important; font-size: 25px; margin: auto">Listado de Compañías</h2>
+
+          <div fxFlex="75" fxLayout="row">
+          </div>
+
+          <button fxFlex="10" mat-raised-button class="actionPrimary-b" matTooltip="Crear Compañía" (click)="createCompany()">
+
+              <mat-icon>add</mat-icon> Nueva Compañía
+          </button>
+
+      </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="scroll-container" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="px grid" fxFlexFill fxLayoutAlign="space-around start">
+  <app-company-item class="comapny-item" *ngFor="let company of companyList" [companyInput]="company"></app-company-item>
+</div>

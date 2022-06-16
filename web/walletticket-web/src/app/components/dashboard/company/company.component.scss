@@ -1,0 +1,38 @@
+.table-responsive {
+	margin: auto;
+	width: 99%;
+	height: 75vh;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+table {
+    width: 100%;
+}
+
+.header-align-right {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.not-found-text{
+    color: gray;
+    font-size: 40px;
+}
+
+.not-found-icon {
+    font-size: 70px;
+    color: gray;
+}
+
+.scroll-container {
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.company-item {
+    min-width: 200px;
+    // margin-right: 10px;
+}

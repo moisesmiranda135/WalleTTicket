@@ -12,5 +12,6 @@ public class JwtUserResponse {
     private String lastName;
     private String role;
     private String token;
+    private Boolean isEnabled;
 
 }

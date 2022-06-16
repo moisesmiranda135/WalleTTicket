@@ -18,5 +18,6 @@ public class CreateUserDto {
     @UniqueUser(message = "{UserEntity.name.uniqueName}")
     private String email;
     private String password;
-
+    private String role;
+    private boolean isEnabled;
 }
