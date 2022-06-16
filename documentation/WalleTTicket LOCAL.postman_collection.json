@@ -1,0 +1,1103 @@
+{
+	"info": {
+		"_postman_id": "ca5e9b67-8eb1-44ed-8a67-4ba44d8a8ec2",
+		"name": "WalleTTicket LOCAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17654632"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User Adrián",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/miranda.comoi20/Documents/Proyecto Final/WalleTTicket/backend/testfiles/miguel_campos.jfif"
+								},
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/miranda.comoi20/Documents/Proyecto Final/WalleTTicket/backend/testjsons/registerUser_Adrian.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/auth/register/user",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"register",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"name\": \"user\",\r\n \"lastName\": \"test\",\r\n \"email\": \"userR.test@walletticket.com\",\r\n \"password\": \"123456\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/auth/register/admin",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"register",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"name\": \"empleado\",\r\n \"lastName\": \"apellidos\",\r\n \"email\": \"empleado@empleado.com\",\r\n \"password\": \"123456\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/auth/register/employee",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"register",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user.test@walletticket.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/auth/login",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"empleado@empleado.com\",\r\n \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/auth/login",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User Adrián",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"adrirr@gmail.com\",\r\n \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/auth/login",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "About me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ4Mjg3Mjc3LCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.Oh8-6fB-Kd2nWlT9hKomdpqFuguEStAV_yNUk7gkmQg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/me",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/auth/all/employee",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"all",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/auth/all/",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"auth",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Electrodomésticos\",\r\n    \"icon\": \"heat_pump\"\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/category/",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/category/",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/category/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testjsons/createCategory_Electrodomesticos.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/category/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/category/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjUxODI0ODE1LCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.1Pga9bbAfjuexLBNvNr4-ulZ-9aAmowAPr2E8IeF_2c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testjsons/createCompany_Carrefour.json"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testfiles/carrefour_logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/company/",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/company/",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/company/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testjsons/createCompany_Mediamarkt.json"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testfiles/mediamarkt.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/company/2",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"company",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testjsons/createCategory_Electrodomesticos.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/company/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "All Tickets User Logged",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Radius.circular(20),",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/ticket/user?ititle=Mi segundo portátil",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								"user"
+							],
+							"query": [
+								{
+									"key": "ititle",
+									"value": "Mi segundo portátil"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Tickets User Logged Favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/ticket/all/user/favorite",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								"all",
+								"user",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Tickets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/ticket/all",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjUxODY1MTE4LCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.0CIoFt--IijYlawjTVG9LdPJldqYX2oIEo16nyErhLw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testjsons/createTicket.json"
+								},
+								{
+									"key": "fileTicket",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testfiles/ticket.jpg"
+								},
+								{
+									"key": "fileProduct",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testfiles/portatil.jfif"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/ticket/",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testjsons/createTicket.json"
+								},
+								{
+									"key": "fileTicket",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testfiles/ticket.jpg"
+								},
+								{
+									"key": "fileProduct",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testfiles/portatil.jfif"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/ticket/",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "json",
+									"type": "file",
+									"src": "/C:/Users/Moi/Documents/2 DAM/Proyecto final FCT/WalleTTicket/backend/testjsons/createCategory_Electrodomesticos.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localUrl}}/ticket/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/ticket/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add to Favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/ticket/favorite/add/2",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								"favorite",
+								"add",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjQ5ODYyODUxLCJub21icmUiOiJNb2lzw6lzIiwiYXBlbGxpZG9zIjoiTWlyYW5kYSBDb3JyYWxlcyIsInJvbCI6IlVTRVIifQ.QeLyHemVWdpjdZjOuC7xSZmHfaTFsCODnQ6ofIK3yVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/ticket/favorite/delete/1",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"ticket",
+								"favorite",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "remoteUrl",
+			"value": "ec2-13-37-105-160.eu-west-3.compute.amazonaws.com",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
