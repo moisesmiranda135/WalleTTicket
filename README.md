@@ -11,8 +11,8 @@ PowerPoint de Presentación del Proyecto https://docs.google.com/presentation/d/
 
 
 Para ejecutar el proyecto:
-Dentro del IntelliJ ejecutar el comando spring.boot.run
-Para arrancar la aplicación angular abrir el directorio raíz del proyectoy ejecutar en el terminal npm run start
-Para ejecutar la aplicaión de flutter pulsar en el botón de la parte superior derecha (start de bbugins)
+-Dentro del IntelliJ ejecutar el comando spring.boot.run
+-Para arrancar la aplicación angular abrir el directorio raíz del proyecto y ejecutar en el terminal npm run start
+-Para ejecutar la aplicaión de flutter pulsar en el botón de la parte superior derecha (start de bbugins)
 
-Dentro del proyecto en la carpeta de documentación aoarece un fichero Postman donde podra probar el funcionamiento de todas las peticiones. Además en esta carpeta también aparecen un listado con todos los empoints y un diagrama de calses dentro de la documentación del proyecto donde viene explicado de forma detallada en que consiste dicho proyecto y como esta formado.
+Dentro del proyecto en la carpeta de documentación aparece un fichero Postman donde podra probar el funcionamiento de todas las peticiones. Además en esta carpeta también aparece un listado con todos los endpoints y un diagrama de clases dentro de la documentación del proyecto donde viene explicado de forma detallada en que consiste dicho proyecto y como esta formado.
