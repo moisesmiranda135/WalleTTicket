@@ -3,6 +3,7 @@ package com.salesianos.triana.dam.walleTTicket.controller;
 import com.salesianos.triana.dam.walleTTicket.dto.Category.CreateCategoryDto;
 import com.salesianos.triana.dam.walleTTicket.dto.Category.GetCategoryDto;
 import com.salesianos.triana.dam.walleTTicket.services.impl.CategoryServiceImpl;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/category")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "walleTTicket")
 public class CategoryController {
 
     private final CategoryServiceImpl categoryService;

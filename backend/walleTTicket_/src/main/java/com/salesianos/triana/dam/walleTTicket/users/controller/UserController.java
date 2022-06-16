@@ -6,6 +6,7 @@ import com.salesianos.triana.dam.walleTTicket.users.dto.GetUserDto;
 import com.salesianos.triana.dam.walleTTicket.users.dto.UserDtoConverter;
 import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
 import com.salesianos.triana.dam.walleTTicket.users.services.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@SecurityRequirement(name = "walleTTicket")
 public class UserController {
 
     private final UserService userService;
@@ -113,23 +115,6 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/employee/enabled/{id}")
-    public ResponseEntity<?> enabledEmployee(@PathVariable Long id) {
-        userService.enabledUser(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PostMapping("/employee/disabled/{id}")
-    public ResponseEntity<?> disabledEmployee(@PathVariable Long id) {
-        userService.disbledUser(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping("user/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Long id, @AuthenticationPrincipal UserEntity u) {
-        userService.deleteUserById(id, u);
-        return ResponseEntity.noContent().build();
-    }
 
     @DeleteMapping("employee/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable Long id, @AuthenticationPrincipal UserEntity u) {

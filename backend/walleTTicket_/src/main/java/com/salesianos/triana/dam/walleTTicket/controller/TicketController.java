@@ -2,8 +2,15 @@ package com.salesianos.triana.dam.walleTTicket.controller;
 
 import com.salesianos.triana.dam.walleTTicket.dto.Ticket.CreateTicketDto;
 import com.salesianos.triana.dam.walleTTicket.dto.Ticket.GetTicketDto;
+import com.salesianos.triana.dam.walleTTicket.model.Ticket;
 import com.salesianos.triana.dam.walleTTicket.services.impl.TicketServiceImpl;
 import com.salesianos.triana.dam.walleTTicket.users.models.UserEntity;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +26,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/ticket")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "walleTTicket")
 public class TicketController {
 
     private final TicketServiceImpl ticketService;
@@ -33,6 +41,16 @@ public class TicketController {
                 .body(ticketService.save(dto, fileTicket, fileProduct, u));
     }
 
+    @Operation(summary = "Obtiene una lista de todas los Tickets")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Se ha encontrado la lista de Tickets",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Ticket.class))}),
+            @ApiResponse(responseCode = "400",
+                    description = "No se ha encontrado ningún Tickets",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Ticket.class))})})
     @GetMapping("/all")
     public ResponseEntity<?> listAll() {
         return ResponseEntity.ok(ticketService.findAll());
