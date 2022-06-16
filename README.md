@@ -11,7 +11,7 @@ PowerPoint de Presentación del Proyecto https://docs.google.com/presentation/d/
 
 
 Para ejecutar el proyecto:
-Dentro del IntelgyJ ejecutar el comando spring.boot.run
+Dentro del IntelliJ ejecutar el comando spring.boot.run
 Para arrancar la aplicación angular abrir el directorio raíz del proyectoy ejecutar en el terminal npm run start
 Para ejecutar la aplicaión de flutter pulsar en el botón de la parte superior derecha (start de bbugins)
 
